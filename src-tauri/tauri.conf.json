@@ -12,9 +12,9 @@
   "app": {
     "windows": [
       {
-        "title": "log-horizon",
-        "width": 800,
-        "height": 600
+        "title": "Log Horizon",
+        "width": 1024,
+        "height": 768
       }
     ],
     "security": {
