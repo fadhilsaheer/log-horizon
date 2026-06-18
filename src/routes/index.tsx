@@ -1,12 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import reactLogo from "../assets/react.svg";
 import { invoke } from "@tauri-apps/api/core";
-import "../App.css";
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute("/")({
   component: Index,
-})
+});
 
 function Index() {
   const [greetMsg, setGreetMsg] = useState("");
