@@ -6,8 +6,14 @@ export const Route = createFileRoute("/")({
 
 function RouteComponent() {
   return (
-    <div className="p-4 flex flex-col items-start gap-4">
-      <h1 className="text-2xl font-bold">Hello "/"!</h1>
-    </div>
+    <section>
+      <textarea
+        autoCorrect="off"
+        autoCapitalize="off"
+        autoComplete="off"
+        spellCheck={false}
+        className="w-screen h-screen bg-mantle p-5 font-serif font-light"
+      ></textarea>
+    </section>
   );
 }
