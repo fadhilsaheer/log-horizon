@@ -74,3 +74,18 @@ pub fn get_entry_path(conn: &Connection, id: &str) -> Result<String> {
     let path: String = stmt.query_row(params![id], |row| row.get(0))?;
     Ok(path)
 }
+
+pub fn get_entry_by_id(conn: &Connection, id: &str) -> Result<DbEntry> {
+    let mut stmt = conn.prepare(
+        "SELECT id, title, created_at, updated_at, file_path FROM entries WHERE id = ?1"
+    )?;
+    stmt.query_row(params![id], |row| {
+        Ok(DbEntry {
+            id: row.get(0)?,
+            title: row.get(1)?,
+            created_at: row.get(2)?,
+            updated_at: row.get(3)?,
+            file_path: row.get(4)?,
+        })
+    })
+}
