@@ -18,11 +18,11 @@ export const EntryList: React.FC<Props> = (props) => {
     <div
       onClick={props.onClick}
       className={`
-                group p-3 rounded-lg cursor-pointer transition-all duration-300 ease-in-out border border-transparent
+                group p-3 rounded-lg cursor-pointer transition-all duration-300 ease-in-out
                 ${
                   props.isActive
-                    ? "bg-surface-0 border-surface-1 shadow-sm"
-                    : "hover:bg-surface-0/50 hover:border-surface-0/50 hover:translate-x-1"
+                    ? "bg-surface-0 shadow-sm"
+                    : "hover:bg-surface-0/50 hover:translate-x-1"
                 }
             `}
     >
@@ -36,11 +36,6 @@ export const EntryList: React.FC<Props> = (props) => {
           {dateStr}
         </p>
       </div>
-      {props.entry.preview && (
-        <p className="text-sm text-subtext-0 truncate mt-1.5 opacity-80 group-hover:opacity-100 transition-opacity">
-          {props.entry.preview}
-        </p>
-      )}
     </div>
   );
 };

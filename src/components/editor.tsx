@@ -46,35 +46,50 @@ export const Editor: React.FC<Props> = (props) => {
     props.onSave(title, e.target.value);
   };
 
+  const dateStr = props.entry
+    ? new Date(props.entry.created_at).toLocaleString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+      })
+    : "";
+
   return (
     <div className="flex-1 flex flex-col h-screen bg-base overflow-hidden animate-in fade-in duration-500">
-      <header className="px-8 py-6 flex items-center justify-between border-b border-surface-0/30 group">
+      <header className="px-8 pt-6 pb-4 flex flex-col group">
+        <div className="flex items-center justify-between w-full mb-1">
+          <span className="text-xs text-subtext-0 font-medium tracking-wide uppercase">
+            {dateStr}
+          </span>
+          <button
+            onClick={props.onDelete}
+            className="opacity-0 group-hover:opacity-100 p-2 -mr-2 text-subtext-0 hover:text-red hover:bg-surface-0 rounded-full transition-all duration-300"
+            title="Delete Entry"
+          >
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
         <input
           type="text"
           value={title}
           onChange={handleTitleChange}
-          className="text-3xl font-serif font-medium bg-transparent border-none outline-none text-text w-full placeholder:text-surface-1 transition-all"
+          className="text-2xl font-serif font-medium bg-transparent border-none outline-none text-text w-full placeholder:text-surface-1 transition-all"
           placeholder="Entry Title"
         />
-        <button
-          onClick={props.onDelete}
-          className="opacity-0 group-hover:opacity-100 p-2 text-subtext-0 hover:text-red hover:bg-surface-0 rounded-full transition-all duration-300"
-          title="Delete Entry"
-        >
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-            ></path>
-          </svg>
-        </button>
       </header>
       <div className="flex-1 relative">
         <textarea

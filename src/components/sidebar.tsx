@@ -11,8 +11,8 @@ interface Props {
 
 export const Sidebar: React.FC<Props> = (props) => {
   return (
-    <aside className="w-[260px] h-screen bg-mantle flex flex-col border-r border-surface-0 shadow-lg z-10 transition-colors duration-300">
-      <div className="p-4 border-b border-surface-0 backdrop-blur-sm bg-mantle/80 sticky top-0">
+    <aside className="w-[260px] h-screen bg-mantle flex flex-col shadow-lg z-10 transition-colors duration-300">
+      <div className="p-4 backdrop-blur-sm bg-mantle/80 sticky top-0">
         <button
           onClick={props.onCreate}
           className="w-full py-2 px-4 bg-sapphire hover:bg-blue text-base font-medium text-base rounded-md shadow-sm transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-md flex items-center justify-center gap-2 group"
