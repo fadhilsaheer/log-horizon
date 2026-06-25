@@ -3,6 +3,8 @@ import { Sidebar } from "../components/sidebar";
 import { Editor } from "../components/editor";
 import { useEntries } from "../hooks/use-entries";
 import { useEntry } from "../hooks/use-entry";
+import { useState } from "react";
+import { invoke } from "@tauri-apps/api/core";
 
 type SearchParams = {
   id?: string;
@@ -23,6 +25,7 @@ function RouteComponent() {
 
   const { entries, refresh, createEntry } = useEntries();
   const { entry, save, deleteEntry } = useEntry(id || null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const handleSelect = (newId: string) => {
     navigate({ search: { id: newId } });
@@ -31,7 +34,15 @@ function RouteComponent() {
   const handleCreate = async () => {
     const newEntry = await createEntry();
     if (newEntry) {
+      const dateStr = new Date().toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      });
+      const defaultTitle = `Log - ${dateStr}`;
+      await invoke("save_entry", { id: newEntry.id, title: defaultTitle, content: "" });
       navigate({ search: { id: newEntry.id } });
+      await refresh();
     }
   };
 
@@ -46,12 +57,13 @@ function RouteComponent() {
   };
 
   return (
-    <>
+    <div className="flex w-full h-screen overflow-hidden">
       <Sidebar
         entries={entries}
         activeId={id || null}
         onSelect={handleSelect}
         onCreate={handleCreate}
+        isOpen={isSidebarOpen}
       />
       <Editor
         entry={entry}
@@ -60,7 +72,8 @@ function RouteComponent() {
           refresh();
         }}
         onDelete={handleDelete}
+        onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
       />
-    </>
+    </div>
   );
 }
