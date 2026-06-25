@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Entry } from "../types/entry";
+import { Entry } from "@/types/entry";
 import { EmptyState } from "./empty-state";
 import { EditorHeader } from "./editor-header";
 import { EditorFooter } from "./editor-footer";
-import { cn } from "../lib/utils";
+import { cn } from "@/lib/utils";
 
 interface Props {
   entry: Entry | null;

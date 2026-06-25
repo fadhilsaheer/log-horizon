@@ -1,6 +1,6 @@
 import React from "react";
-import { EntryMeta } from "../types/entry";
-import { cn } from "../lib/utils";
+import { EntryMeta } from "@/types/entry";
+import { cn } from "@/lib/utils";
 
 interface Props {
   entry: EntryMeta;

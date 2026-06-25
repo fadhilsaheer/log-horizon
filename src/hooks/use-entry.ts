@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { invoke } from "@tauri-apps/api/core";
-import { Entry } from "../types/entry";
+import { Entry } from "@/types/entry";
 
 export function useEntry(id: string | null) {
   const [entry, setEntry] = useState<Entry | null>(null);

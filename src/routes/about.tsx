@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useTheme, Theme } from "../hooks/useTheme";
+import { useTheme, Theme } from "@/hooks/useTheme";
 
 export const Route = createFileRoute("/about")({
   component: About,

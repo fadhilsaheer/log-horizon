@@ -1,10 +1,10 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { Sidebar } from "../components/sidebar";
-import { Editor } from "../components/editor";
-import { useEntries } from "../hooks/use-entries";
-import { useEntry } from "../hooks/use-entry";
 import { useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
+import { Sidebar } from "@/components/sidebar";
+import { Editor } from "@/components/editor";
+import { useEntries } from "@/hooks/use-entries";
+import { useEntry } from "@/hooks/use-entry";
 
 type SearchParams = {
   id?: string;
@@ -40,7 +40,11 @@ function RouteComponent() {
         year: "numeric",
       });
       const defaultTitle = `Log - ${dateStr}`;
-      await invoke("save_entry", { id: newEntry.id, title: defaultTitle, content: "" });
+      await invoke("save_entry", {
+        id: newEntry.id,
+        title: defaultTitle,
+        content: "",
+      });
       navigate({ search: { id: newEntry.id } });
       await refresh();
     }

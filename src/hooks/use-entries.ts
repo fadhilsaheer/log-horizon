@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { invoke } from "@tauri-apps/api/core";
-import { EntryMeta } from "../types/entry";
+import { EntryMeta } from "@/types/entry";
 
 export function useEntries() {
   const [entries, setEntries] = useState<EntryMeta[]>([]);
