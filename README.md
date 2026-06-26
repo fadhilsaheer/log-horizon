@@ -1,11 +1,7 @@
-<center>
-    <img src="./public/logo.png" width="20%" >
-    <h1>Log Horizon</h1>
-</center>
+<img src="./public/logo.png" width="20%" >
+# Log Horizon
 
-<p align="center">
-  A beautifully minimalist, distraction-free daily log and journaling app for your desktop.
-</p>
+A beautifully minimalist, distraction-free daily log and journaling app for your desktop.
 
 ## What it does
 
