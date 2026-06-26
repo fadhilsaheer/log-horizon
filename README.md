@@ -1,4 +1,5 @@
 <img src="./public/logo.png" width="20%" >
+
 # Log Horizon
 
 A beautifully minimalist, distraction-free daily log and journaling app for your desktop.
