@@ -9,22 +9,21 @@ interface Props {
   className?: string;
 }
 
-export const EditorFooter: React.FC<Props> = ({
-  updatedAtStr,
-  cursorPos,
-  wordsCount,
-  charsCount,
-  className
-}) => {
+export const EditorFooter: React.FC<Props> = (props) => {
   return (
-    <footer className={cn("flex-none px-8 py-2 border-t border-surface-0/20 flex items-center justify-between text-xs text-subtext-0 bg-base z-10", className)}>
-      <div>
-        Last updated: {updatedAtStr}
-      </div>
+    <footer
+      className={cn(
+        "flex-none px-8 py-2 border-t border-surface-0/20 flex items-center justify-between text-xs text-subtext-0 bg-base z-10",
+        props.className,
+      )}
+    >
+      <div>Last updated: {props.updatedAtStr}</div>
       <div className="flex items-center gap-6">
-        <span>Ln {cursorPos.line}, Col {cursorPos.col}</span>
-        <span>{wordsCount} words</span>
-        <span>{charsCount} chars</span>
+        <span>
+          Ln {props.cursorPos.line}, Col {props.cursorPos.col}
+        </span>
+        <span>{props.wordsCount} words</span>
+        <span>{props.charsCount} chars</span>
       </div>
     </footer>
   );
