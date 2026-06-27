@@ -19,11 +19,11 @@ export const EditorFooter: React.FC<Props> = (props) => {
     >
       <div>Last updated: {props.updatedAtStr}</div>
       <div className="flex items-center gap-6">
-        <span>
+        <span className="tabular-nums">
           Ln {props.cursorPos.line}, Col {props.cursorPos.col}
         </span>
-        <span>{props.wordsCount} words</span>
-        <span>{props.charsCount} chars</span>
+        <span className="tabular-nums">{props.wordsCount} words</span>
+        <span className="tabular-nums">{props.charsCount} chars</span>
       </div>
     </footer>
   );
