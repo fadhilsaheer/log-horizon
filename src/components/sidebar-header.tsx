@@ -20,7 +20,7 @@ export const SidebarHeader: React.FC<Props> = (props) => {
           alt="Log Horizon"
           className="w-6 h-6 object-contain"
         />
-        <span className="font-bold text-text">Log Horizon</span>
+        <span className="font-black text-text">Log Horizon</span>
       </div>
       <button
         onClick={props.onCreate}

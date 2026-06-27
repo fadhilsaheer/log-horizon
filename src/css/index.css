@@ -1,6 +1,8 @@
 @import "tailwindcss";
+@import "./satoshi.css";
 
 @theme {
+  --font-sans: "Satoshi-Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --color-rosewater: var(--rosewater);
   --color-flamingo: var(--flamingo);
   --color-pink: var(--pink);

@@ -100,7 +100,7 @@ export const Editor: React.FC<Props> = (props) => {
           className={cn(
             "absolute inset-0 w-full h-full p-8 pt-0 bg-transparent",
             "border-none outline-none text-text text-lg leading-relaxed",
-            "font-serif resize-none focus:ring-0 custom-scrollbar pb-12",
+            "resize-none focus:ring-0 custom-scrollbar pb-12",
           )}
           placeholder="Start writing..."
           autoFocus
