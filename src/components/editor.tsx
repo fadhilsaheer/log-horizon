@@ -80,7 +80,7 @@ export const Editor: React.FC<Props> = (props) => {
   const charsCount = content.length;
 
   return (
-    <div className="flex-1 flex flex-col h-screen w-full bg-base animate-in fade-in duration-500 overflow-hidden">
+    <div className="flex-1 flex flex-col h-screen w-full bg-base animate-in fade-in transition-all duration-300 overflow-hidden">
       <EditorHeader
         title={title}
         dateStr={dateStr}
@@ -90,7 +90,7 @@ export const Editor: React.FC<Props> = (props) => {
       />
 
       <ScrollArea className="flex-1 w-full">
-        <div 
+        <div
           className="flex-1 flex flex-col p-8 pt-0 pb-12 cursor-text min-h-full"
           onClick={() => textareaRef.current?.focus()}
         >

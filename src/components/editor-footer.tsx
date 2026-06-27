@@ -13,7 +13,7 @@ export const EditorFooter: React.FC<Props> = (props) => {
   return (
     <footer
       className={cn(
-        "flex-none px-8 pb-5 pt-1 flex items-center justify-between text-xs text-subtext-0 bg-base z-10",
+        "flex-none px-8 pb-5 pt-1 flex items-center justify-between text-xs text-subtext-0 bg-base z-10 transition-all duration-300",
         props.className,
       )}
     >

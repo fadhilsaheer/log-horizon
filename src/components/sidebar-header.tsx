@@ -10,7 +10,7 @@ export const SidebarHeader: React.FC<Props> = (props) => {
   return (
     <div
       className={cn(
-        "px-5 pt-5 backdrop-blur-sm bg-mantle/80 sticky top-0 flex items-center justify-between z-20",
+        "px-5 pt-5 backdrop-blur-sm bg-mantle/80 sticky top-0 flex items-center justify-between z-20 transition-all duration-300",
         props.className,
       )}
     >
@@ -24,7 +24,7 @@ export const SidebarHeader: React.FC<Props> = (props) => {
       </div>
       <button
         onClick={props.onCreate}
-        className="p-1.5 text-subtext-0 hover:text-text hover:bg-surface-0/50 rounded-lg transition-colors"
+        className="p-1.5 text-subtext-0 hover:text-text hover:bg-surface-0/50 rounded-lg transition-all duration-300"
         title="New Entry"
       >
         <svg

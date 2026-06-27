@@ -12,14 +12,14 @@ export const SidebarFooter: React.FC<Props> = (props) => {
   return (
     <div
       className={cn(
-        "pb-3.5 px-5  mt-auto flex items-center justify-between",
+        "pb-3.5 px-5  mt-auto flex items-center justify-between transition-all duration-300",
         props.className,
       )}
     >
       <span className="text-xs text-subtext-0">Log Horizon v0.0.1</span>
       <button
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        className="p-1.5 rounded-lg hover:bg-surface-0/50 text-subtext-0 hover:text-text transition-colors"
+        className="p-1.5 rounded-lg hover:bg-surface-0/50 text-subtext-0 hover:text-text transition-all duration-300"
       >
         {theme === "dark" ? (
           <svg

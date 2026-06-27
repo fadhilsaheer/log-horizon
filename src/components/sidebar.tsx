@@ -19,7 +19,7 @@ export const Sidebar: React.FC<Props> = (props) => {
   return (
     <aside
       className={cn(
-        "h-screen bg-mantle flex flex-col shadow-lg",
+        "h-screen bg-mantle flex flex-col",
         "z-10 transition-all duration-300 ease-in-out shrink-0 overflow-hidden",
         props.isOpen !== false ? "w-[260px] opacity-100" : "w-0 opacity-0",
       )}

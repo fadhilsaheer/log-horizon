@@ -51,7 +51,7 @@ const ScrollArea = React.forwardRef<
 
       <ScrollAreaPrimitive.Viewport
         ref={viewportRef}
-        className="h-full w-full rounded-[inherit] [&>div]:block! transition-all duration-300"
+        className="h-full w-full rounded-[inherit] [&>div]:block!"
         onScroll={checkScroll}
         style={{
           maskImage: `linear-gradient(to bottom, ${scrollTop > 0 ? "transparent" : "black"}, black 32px, black calc(100% - 32px), ${isBottom ? "black" : "transparent"})`,

@@ -22,7 +22,7 @@ export const EditorHeader: React.FC<Props> = (props) => {
         <div className="flex items-center gap-3">
           <button
             onClick={props.onToggleSidebar}
-            className="p-1.5 -ml-1 text-subtext-0 hover:text-text hover:bg-surface-0/50 rounded-md transition-colors z-20"
+            className="p-1.5 -ml-1 text-subtext-0 hover:text-text hover:bg-surface-0/50 rounded-md transition-all duration-300 z-20"
             title="Toggle Sidebar"
           >
             <svg
@@ -67,7 +67,7 @@ export const EditorHeader: React.FC<Props> = (props) => {
         type="text"
         value={props.title}
         onChange={props.onTitleChange}
-        className="text-2xl font-semibold bg-transparent border-none outline-none text-text w-full placeholder:text-surface-1 transition-all"
+        className="text-2xl font-semibold bg-transparent border-none outline-none text-text w-full placeholder:text-surface-1 transition-all duration-300"
         placeholder="Entry Title"
       />
     </header>

@@ -24,7 +24,7 @@ export const EntryList: React.FC<Props> = (props) => {
       <div className="pr-6">
         <h3
           className={cn(
-            "font-medium truncate transition-colors duration-300 text-sm",
+            "font-medium truncate transition-all duration-300 text-sm",
             props.isActive
               ? "text-text"
               : "text-subtext-1 group-hover/entry-item:text-text",
