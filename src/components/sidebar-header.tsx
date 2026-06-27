@@ -10,7 +10,7 @@ export const SidebarHeader: React.FC<Props> = (props) => {
   return (
     <div
       className={cn(
-        "p-4 backdrop-blur-sm bg-mantle/80 sticky top-0 flex items-center justify-between z-20 border-b border-surface-0/20",
+        "p-4 backdrop-blur-sm bg-mantle/80 sticky top-0 flex items-center justify-between z-20",
         props.className,
       )}
     >
@@ -20,15 +20,15 @@ export const SidebarHeader: React.FC<Props> = (props) => {
           alt="Log Horizon"
           className="w-6 h-6 object-contain"
         />
-        <span className="font-semibold text-text">Log Horizon</span>
+        <span className="font-bold text-text">Log Horizon</span>
       </div>
       <button
         onClick={props.onCreate}
-        className="p-1.5 text-subtext-0 hover:text-text hover:bg-surface-0/50 rounded-md transition-colors"
+        className="p-1.5 text-subtext-0 hover:text-text hover:bg-surface-0/50 rounded-lg transition-colors"
         title="New Entry"
       >
         <svg
-          className="w-5 h-5"
+          className="size-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

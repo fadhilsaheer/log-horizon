@@ -19,25 +19,19 @@ export const EntryList: React.FC<Props> = (props) => {
     <div
       onClick={props.onClick}
       className={cn(
-        "group p-3 rounded-lg cursor-pointer transition-all duration-300 ease-in-out",
-        props.isActive
-          ? "bg-surface-0 shadow-sm"
-          : "hover:bg-surface-0/50 hover:translate-x-1",
+        "group px-3 py-2 rounded-lg cursor-pointer transition-all duration-300 ease-in-out",
+        props.isActive ? "bg-surface-0" : "hover:bg-surface-0/50",
       )}
     >
       <h3
         className={cn(
-          "font-medium truncate transition-colors duration-300",
+          "font-medium truncate transition-colors duration-300 text-sm",
           props.isActive ? "text-text" : "text-subtext-1 group-hover:text-text",
         )}
       >
         {props.entry.title}
       </h3>
-      <div className="flex justify-between items-center mt-1">
-        <p className="text-xs text-subtext-0 font-medium tracking-wide uppercase">
-          {dateStr}
-        </p>
-      </div>
+      <p className="text-xs text-subtext-0 font-light">{dateStr}</p>
     </div>
   );
 };

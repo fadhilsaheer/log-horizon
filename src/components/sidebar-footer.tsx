@@ -12,13 +12,14 @@ export const SidebarFooter: React.FC<Props> = (props) => {
   return (
     <div
       className={cn(
-        "p-4 border-t border-surface-0/20 mt-auto",
+        "py-3.5 px-5  mt-auto flex items-center justify-between",
         props.className,
       )}
     >
+      <span className="text-xs text-subtext-0">Log Horizon v0.0.1</span>
       <button
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-md hover:bg-surface-0/50 text-subtext-0 hover:text-text transition-colors text-sm"
+        className="p-1.5 rounded-lg hover:bg-surface-0/50 text-subtext-0 hover:text-text transition-colors"
       >
         {theme === "dark" ? (
           <svg
@@ -49,7 +50,6 @@ export const SidebarFooter: React.FC<Props> = (props) => {
             />
           </svg>
         )}
-        <span>Toggle Theme</span>
       </button>
     </div>
   );

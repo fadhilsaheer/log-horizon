@@ -14,7 +14,7 @@ export const EditorHeader: React.FC<Props> = (props) => {
   return (
     <header
       className={cn(
-        "px-8 pt-6 pb-4 flex flex-col group relative",
+        "px-8 pt-3.5 pb-4 flex flex-col group relative",
         props.className,
       )}
     >
@@ -22,11 +22,11 @@ export const EditorHeader: React.FC<Props> = (props) => {
         <div className="flex items-center gap-3">
           <button
             onClick={props.onToggleSidebar}
-            className="p-1 -ml-1 text-subtext-0 hover:text-text hover:bg-surface-0/50 rounded-md transition-colors z-20"
+            className="p-1.5 -ml-1 text-subtext-0 hover:text-text hover:bg-surface-0/50 rounded-md transition-colors z-20"
             title="Toggle Sidebar"
           >
             <svg
-              className="w-5 h-5"
+              className="size-4"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -45,11 +45,11 @@ export const EditorHeader: React.FC<Props> = (props) => {
         </div>
         <button
           onClick={props.onDelete}
-          className="opacity-0 group-hover:opacity-100 p-2 -mr-2 text-subtext-0 hover:text-red hover:bg-surface-0 rounded-full transition-all duration-300"
+          className="opacity-0 group-hover:opacity-100 p-1.5 -mr-2 text-subtext-0 hover:text-red hover:bg-surface-0 rounded-lg transition-all duration-300"
           title="Delete Entry"
         >
           <svg
-            className="w-4 h-4"
+            className="size-4"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -67,7 +67,7 @@ export const EditorHeader: React.FC<Props> = (props) => {
         type="text"
         value={props.title}
         onChange={props.onTitleChange}
-        className="text-2xl font-serif font-medium bg-transparent border-none outline-none text-text w-full placeholder:text-surface-1 transition-all"
+        className="text-2xl font-semibold bg-transparent border-none outline-none text-text w-full placeholder:text-surface-1 transition-all"
         placeholder="Entry Title"
       />
     </header>

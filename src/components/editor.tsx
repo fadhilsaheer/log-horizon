@@ -31,11 +31,14 @@ export const Editor: React.FC<Props> = (props) => {
 
   const handleCursorChange = () => {
     if (textareaRef.current) {
-      const textBeforeCursor = textareaRef.current.value.substring(0, textareaRef.current.selectionStart);
-      const lines = textBeforeCursor.split('\n');
+      const textBeforeCursor = textareaRef.current.value.substring(
+        0,
+        textareaRef.current.selectionStart,
+      );
+      const lines = textBeforeCursor.split("\n");
       setCursorPos({
         line: lines.length,
-        col: lines[lines.length - 1].length + 1
+        col: lines[lines.length - 1].length + 1,
       });
     }
   };
@@ -59,27 +62,34 @@ export const Editor: React.FC<Props> = (props) => {
     minute: "numeric",
   });
 
-  const updatedAtStr = new Date(props.entry.updated_at).toLocaleString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-  });
+  const updatedAtStr = new Date(props.entry.updated_at).toLocaleString(
+    "en-US",
+    {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+    },
+  );
 
   const wordsCount = content.trim() ? content.trim().split(/\s+/).length : 0;
   const charsCount = content.length;
 
   return (
-    <div className={cn("flex-1 flex flex-col h-screen bg-base overflow-hidden animate-in fade-in duration-500")}>
-      <EditorHeader 
+    <div
+      className={cn(
+        "flex-1 flex flex-col h-screen overflow-hidden animate-in fade-in duration-500",
+      )}
+    >
+      <EditorHeader
         title={title}
         dateStr={dateStr}
         onTitleChange={handleTitleChange}
         onToggleSidebar={props.onToggleSidebar}
         onDelete={props.onDelete}
       />
-      
+
       <div className="flex-1 relative">
         <textarea
           ref={textareaRef}
@@ -88,9 +98,9 @@ export const Editor: React.FC<Props> = (props) => {
           onKeyUp={handleCursorChange}
           onClick={handleCursorChange}
           className={cn(
-            "absolute inset-0 w-full h-full p-8 bg-transparent",
+            "absolute inset-0 w-full h-full p-8 pt-0 bg-transparent",
             "border-none outline-none text-text text-lg leading-relaxed",
-            "font-serif resize-none focus:ring-0 custom-scrollbar pb-12"
+            "font-serif resize-none focus:ring-0 custom-scrollbar pb-12",
           )}
           placeholder="Start writing..."
           autoFocus
@@ -98,7 +108,7 @@ export const Editor: React.FC<Props> = (props) => {
         />
       </div>
 
-      <EditorFooter 
+      <EditorFooter
         updatedAtStr={updatedAtStr}
         cursorPos={cursorPos}
         wordsCount={wordsCount}
@@ -107,4 +117,3 @@ export const Editor: React.FC<Props> = (props) => {
     </div>
   );
 };
-
