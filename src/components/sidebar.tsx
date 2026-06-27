@@ -3,6 +3,7 @@ import { EntryMeta } from "@/types/entry";
 import { EntryList } from "./entry-list";
 import { SidebarHeader } from "./sidebar-header";
 import { SidebarFooter } from "./sidebar-footer";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -26,13 +27,13 @@ export const Sidebar: React.FC<Props> = (props) => {
       <div className="w-[260px] h-full flex flex-col min-w-[260px]">
         <SidebarHeader onCreate={props.onCreate} />
 
-        <div
+        <ScrollArea
           className={cn(
-            "flex-1 overflow-y-auto overflow-x-hidden p-2 space-y-1 custom-scrollbar",
+            "flex-1 overflow-x-hidden p-2 space-y-1",
           )}
         >
           {props.entries.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-full text-center p-6 select-none opacity-80">
+            <div className="flex flex-col items-center justify-center h-full text-center p-6 select-none opacity-80 min-h-[300px]">
               <div className="w-12 h-12 mb-3 rounded-full bg-surface-0/50 flex items-center justify-center text-subtext-0">
                 <svg
                   className="size-6"
@@ -54,17 +55,19 @@ export const Sidebar: React.FC<Props> = (props) => {
               </p>
             </div>
           ) : (
-            props.entries.map((entry) => (
-              <EntryList
-                key={entry.id}
-                entry={entry}
-                isActive={props.activeId === entry.id}
-                onClick={() => props.onSelect(entry.id)}
-                onDelete={() => props.onDelete(entry.id)}
-              />
-            ))
+            <div className="flex flex-col gap-1 pr-1">
+              {props.entries.map((entry) => (
+                <EntryList
+                  key={entry.id}
+                  entry={entry}
+                  isActive={props.activeId === entry.id}
+                  onClick={() => props.onSelect(entry.id)}
+                  onDelete={() => props.onDelete(entry.id)}
+                />
+              ))}
+            </div>
           )}
-        </div>
+        </ScrollArea>
 
         <SidebarFooter />
       </div>

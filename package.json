@@ -10,6 +10,7 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@radix-ui/react-scroll-area": "^1.2.12",
     "@tailwindcss/vite": "^4.3.1",
     "@tanstack/react-router": "^1.170.16",
     "@tauri-apps/api": "^2",

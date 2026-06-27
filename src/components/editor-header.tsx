@@ -18,7 +18,7 @@ export const EditorHeader: React.FC<Props> = (props) => {
         props.className,
       )}
     >
-      <div className="flex items-center justify-between w-full mb-1">
+      <div className="flex items-center justify-between w-full mb-5">
         <div className="flex items-center gap-3">
           <button
             onClick={props.onToggleSidebar}

@@ -3,6 +3,7 @@ import { Entry } from "@/types/entry";
 import { EmptyState } from "./empty-state";
 import { EditorHeader } from "./editor-header";
 import { EditorFooter } from "./editor-footer";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 
@@ -19,10 +20,19 @@ export const Editor: React.FC<Props> = (props) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [cursorPos, setCursorPos] = useState({ line: 1, col: 1 });
 
+  const adjustTextareaHeight = () => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  };
+
   useEffect(() => {
     if (props.entry) {
       setTitle(props.entry.title);
       setContent(props.entry.content);
+      // Timeout to ensure DOM has updated before adjusting height
+      setTimeout(adjustTextareaHeight, 0);
     }
   }, [props.entry?.id]);
 
@@ -53,21 +63,24 @@ export const Editor: React.FC<Props> = (props) => {
     setContent(e.target.value);
     props.onSave(title, e.target.value);
     handleCursorChange();
+    adjustTextareaHeight();
   };
 
-  const dateStr = format(new Date(props.entry.created_at), "MMM d, yyyy, h:mm a");
+  const dateStr = format(
+    new Date(props.entry.created_at),
+    "MMM d, yyyy, h:mm a",
+  );
 
-  const updatedAtStr = format(new Date(props.entry.updated_at), "MMM d, yyyy, h:mm a");
+  const updatedAtStr = format(
+    new Date(props.entry.updated_at),
+    "MMM d, yyyy, h:mm a",
+  );
 
   const wordsCount = content.trim() ? content.trim().split(/\s+/).length : 0;
   const charsCount = content.length;
 
   return (
-    <div
-      className={cn(
-        "flex-1 flex flex-col h-screen overflow-hidden animate-in fade-in duration-500",
-      )}
-    >
+    <div className="flex-1 flex flex-col h-screen w-full bg-base animate-in fade-in duration-500 overflow-hidden">
       <EditorHeader
         title={title}
         dateStr={dateStr}
@@ -76,23 +89,31 @@ export const Editor: React.FC<Props> = (props) => {
         onDelete={props.onDelete}
       />
 
-      <div className="flex-1 relative">
-        <textarea
-          ref={textareaRef}
-          value={content}
-          onChange={handleContentChange}
-          onKeyUp={handleCursorChange}
-          onClick={handleCursorChange}
-          className={cn(
-            "absolute inset-0 w-full h-full p-8 pt-0 bg-transparent",
-            "border-none outline-none text-text text-lg leading-relaxed",
-            "resize-none focus:ring-0 custom-scrollbar pb-12",
-          )}
-          placeholder="Start writing..."
-          autoFocus
-          spellCheck={false}
-        />
-      </div>
+      <ScrollArea className="flex-1 w-full">
+        <div 
+          className="flex-1 flex flex-col p-8 pt-0 pb-12 cursor-text min-h-full"
+          onClick={() => textareaRef.current?.focus()}
+        >
+          <textarea
+            ref={textareaRef}
+            value={content}
+            onChange={handleContentChange}
+            onKeyUp={handleCursorChange}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleCursorChange();
+            }}
+            className={cn(
+              "w-full bg-transparent border-none outline-none text-text text-lg leading-relaxed",
+              "resize-none focus:ring-0 overflow-hidden",
+            )}
+            style={{ minHeight: "200px" }}
+            placeholder="Start writing..."
+            autoFocus
+            spellCheck={false}
+          />
+        </div>
+      </ScrollArea>
 
       <EditorFooter
         updatedAtStr={updatedAtStr}
