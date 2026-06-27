@@ -10,6 +10,7 @@ interface Props {
   activeId: string | null;
   onSelect: (id: string) => void;
   onCreate: () => void;
+  onDelete: (id: string) => void;
   isOpen?: boolean;
 }
 
@@ -36,6 +37,7 @@ export const Sidebar: React.FC<Props> = (props) => {
               entry={entry}
               isActive={props.activeId === entry.id}
               onClick={() => props.onSelect(entry.id)}
+              onDelete={() => props.onDelete(entry.id)}
             />
           ))}
         </div>
