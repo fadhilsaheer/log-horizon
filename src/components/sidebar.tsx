@@ -31,15 +31,39 @@ export const Sidebar: React.FC<Props> = (props) => {
             "flex-1 overflow-y-auto overflow-x-hidden p-2 space-y-1 custom-scrollbar",
           )}
         >
-          {props.entries.map((entry) => (
-            <EntryList
-              key={entry.id}
-              entry={entry}
-              isActive={props.activeId === entry.id}
-              onClick={() => props.onSelect(entry.id)}
-              onDelete={() => props.onDelete(entry.id)}
-            />
-          ))}
+          {props.entries.length === 0 ? (
+            <div className="flex flex-col items-center justify-center h-full text-center p-6 select-none opacity-80">
+              <div className="w-12 h-12 mb-3 rounded-full bg-surface-0/50 flex items-center justify-center text-subtext-0">
+                <svg
+                  className="size-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1.5"
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                  />
+                </svg>
+              </div>
+              <p className="text-sm font-medium text-text">No logs yet</p>
+              <p className="text-xs text-subtext-0 mt-1">
+                Create your first entry to get started.
+              </p>
+            </div>
+          ) : (
+            props.entries.map((entry) => (
+              <EntryList
+                key={entry.id}
+                entry={entry}
+                isActive={props.activeId === entry.id}
+                onClick={() => props.onSelect(entry.id)}
+                onDelete={() => props.onDelete(entry.id)}
+              />
+            ))
+          )}
         </div>
 
         <SidebarFooter />
