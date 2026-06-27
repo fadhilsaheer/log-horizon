@@ -17,7 +17,7 @@ export const EntryList: React.FC<Props> = (props) => {
     <div
       onClick={props.onClick}
       className={cn(
-        "group relative px-3 py-2 rounded-lg cursor-pointer transition-all duration-300 ease-in-out",
+        "group/entry-item relative px-3 py-2 rounded-lg cursor-pointer transition-all duration-300 ease-in-out",
         props.isActive ? "bg-surface-0" : "hover:bg-surface-0/50",
       )}
     >
@@ -27,7 +27,7 @@ export const EntryList: React.FC<Props> = (props) => {
             "font-medium truncate transition-colors duration-300 text-sm",
             props.isActive
               ? "text-text"
-              : "text-subtext-1 group-hover:text-text",
+              : "text-subtext-1 group-hover/entry-item:text-text",
           )}
         >
           {props.entry.title}
@@ -39,7 +39,7 @@ export const EntryList: React.FC<Props> = (props) => {
           e.stopPropagation();
           props.onDelete();
         }}
-        className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 opacity-0 group-hover:opacity-100 text-subtext-0 hover:text-red transition-all duration-300 rounded-lg hover:bg-surface-1"
+        className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 opacity-0 group-hover/entry-item:opacity-100 text-subtext-0 hover:text-red transition-all duration-300 rounded-lg hover:bg-surface-1"
         title="Delete Entry"
       >
         <svg

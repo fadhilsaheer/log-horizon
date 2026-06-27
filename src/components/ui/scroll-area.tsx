@@ -15,7 +15,9 @@ const ScrollArea = React.forwardRef<
       const target = viewportRef.current;
       setScrollTop(target.scrollTop);
       // 2px threshold for rounding errors
-      setIsBottom(target.scrollHeight - target.scrollTop <= target.clientHeight + 2);
+      setIsBottom(
+        target.scrollHeight - target.scrollTop <= target.clientHeight + 2,
+      );
     }
   }, []);
 
@@ -28,7 +30,7 @@ const ScrollArea = React.forwardRef<
     if (viewport.firstElementChild) {
       observer.observe(viewport.firstElementChild);
     }
-    
+
     checkScroll();
     return () => observer.disconnect();
   }, [checkScroll]);
@@ -40,31 +42,31 @@ const ScrollArea = React.forwardRef<
       {...props}
     >
       {/* Top Blur Fade Overlay */}
-      <div 
+      <div
         className={cn(
-          "absolute top-0 inset-x-0 h-10 z-10 pointer-events-none select-none backdrop-blur-[4px] [mask-image:linear-gradient(to_bottom,black_20%,transparent)] transition-opacity duration-300",
-          scrollTop > 0 ? "opacity-100" : "opacity-0"
-        )} 
+          "absolute top-0 inset-x-0 h-10 z-10 pointer-events-none select-none backdrop-blur-xs mask-[linear-gradient(to_bottom,black_20%,transparent)] transition-opacity duration-300",
+          scrollTop > 0 ? "opacity-100" : "opacity-0",
+        )}
       />
 
-      <ScrollAreaPrimitive.Viewport 
+      <ScrollAreaPrimitive.Viewport
         ref={viewportRef}
-        className="h-full w-full rounded-[inherit] [&>div]:!block transition-all duration-300"
+        className="h-full w-full rounded-[inherit] [&>div]:block! transition-all duration-300"
         onScroll={checkScroll}
         style={{
-          maskImage: `linear-gradient(to bottom, ${scrollTop > 0 ? 'transparent' : 'black'}, black 32px, black calc(100% - 32px), ${isBottom ? 'black' : 'transparent'})`,
-          WebkitMaskImage: `linear-gradient(to bottom, ${scrollTop > 0 ? 'transparent' : 'black'}, black 32px, black calc(100% - 32px), ${isBottom ? 'black' : 'transparent'})`
+          maskImage: `linear-gradient(to bottom, ${scrollTop > 0 ? "transparent" : "black"}, black 32px, black calc(100% - 32px), ${isBottom ? "black" : "transparent"})`,
+          WebkitMaskImage: `linear-gradient(to bottom, ${scrollTop > 0 ? "transparent" : "black"}, black 32px, black calc(100% - 32px), ${isBottom ? "black" : "transparent"})`,
         }}
       >
         {children}
       </ScrollAreaPrimitive.Viewport>
 
       {/* Bottom Blur Fade Overlay */}
-      <div 
+      <div
         className={cn(
-          "absolute bottom-0 inset-x-0 h-10 z-10 pointer-events-none select-none backdrop-blur-[4px] [mask-image:linear-gradient(to_top,black_20%,transparent)] transition-opacity duration-300",
-          isBottom ? "opacity-0" : "opacity-100"
-        )} 
+          "absolute bottom-0 inset-x-0 h-10 z-10 pointer-events-none select-none backdrop-blur-xs mask-[linear-gradient(to_top,black_20%,transparent)] transition-opacity duration-300",
+          isBottom ? "opacity-0" : "opacity-100",
+        )}
       />
 
       <ScrollBar />
@@ -87,7 +89,7 @@ const ScrollBar = React.forwardRef<
         "h-full w-2.5 border-l border-l-transparent p-[2px]",
       orientation === "horizontal" &&
         "h-2.5 flex-col border-t border-t-transparent p-[2px]",
-      className
+      className,
     )}
     {...props}
   >
