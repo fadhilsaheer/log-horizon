@@ -14,33 +14,34 @@ interface Props {
 }
 
 export const Sidebar: React.FC<Props> = (props) => {
-  if (props.isOpen === false) return null;
-
   return (
     <aside
       className={cn(
-        "w-[260px] h-screen bg-mantle flex flex-col shadow-lg",
-        "z-10 transition-colors duration-300 shrink-0",
+        "h-screen bg-mantle flex flex-col shadow-lg",
+        "z-10 transition-all duration-300 ease-in-out shrink-0 overflow-hidden",
+        props.isOpen !== false ? "w-[260px] opacity-100" : "w-0 opacity-0",
       )}
     >
-      <SidebarHeader onCreate={props.onCreate} />
+      <div className="w-[260px] h-full flex flex-col min-w-[260px]">
+        <SidebarHeader onCreate={props.onCreate} />
 
-      <div
-        className={cn(
-          "flex-1 overflow-y-auto overflow-x-hidden p-2 space-y-1 custom-scrollbar",
-        )}
-      >
-        {props.entries.map((entry) => (
-          <EntryList
-            key={entry.id}
-            entry={entry}
-            isActive={props.activeId === entry.id}
-            onClick={() => props.onSelect(entry.id)}
-          />
-        ))}
+        <div
+          className={cn(
+            "flex-1 overflow-y-auto overflow-x-hidden p-2 space-y-1 custom-scrollbar",
+          )}
+        >
+          {props.entries.map((entry) => (
+            <EntryList
+              key={entry.id}
+              entry={entry}
+              isActive={props.activeId === entry.id}
+              onClick={() => props.onSelect(entry.id)}
+            />
+          ))}
+        </div>
+
+        <SidebarFooter />
       </div>
-
-      <SidebarFooter />
     </aside>
   );
 };
