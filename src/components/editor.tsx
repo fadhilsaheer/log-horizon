@@ -4,6 +4,7 @@ import { EmptyState } from "./empty-state";
 import { EditorHeader } from "./editor-header";
 import { EditorFooter } from "./editor-footer";
 import { cn } from "@/lib/utils";
+import { format } from "date-fns";
 
 interface Props {
   entry: Entry | null;
@@ -54,24 +55,9 @@ export const Editor: React.FC<Props> = (props) => {
     handleCursorChange();
   };
 
-  const dateStr = new Date(props.entry.created_at).toLocaleString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-  });
+  const dateStr = format(new Date(props.entry.created_at), "MMM d, yyyy, h:mm a");
 
-  const updatedAtStr = new Date(props.entry.updated_at).toLocaleString(
-    "en-US",
-    {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-    },
-  );
+  const updatedAtStr = format(new Date(props.entry.updated_at), "MMM d, yyyy, h:mm a");
 
   const wordsCount = content.trim() ? content.trim().split(/\s+/).length : 0;
   const charsCount = content.length;

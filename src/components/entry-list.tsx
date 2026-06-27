@@ -1,4 +1,5 @@
 import React from "react";
+import { format } from "date-fns";
 import { EntryMeta } from "@/types/entry";
 import { cn } from "@/lib/utils";
 
@@ -9,11 +10,7 @@ interface Props {
 }
 
 export const EntryList: React.FC<Props> = (props) => {
-  const dateStr = new Date(props.entry.created_at).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
+  const dateStr = format(new Date(props.entry.created_at), "MMM d, yyyy");
 
   return (
     <div

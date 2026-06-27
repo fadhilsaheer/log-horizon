@@ -5,6 +5,7 @@ import { Sidebar } from "@/components/sidebar";
 import { Editor } from "@/components/editor";
 import { useEntries } from "@/hooks/use-entries";
 import { useEntry } from "@/hooks/use-entry";
+import { format } from "date-fns";
 
 type SearchParams = {
   id?: string;
@@ -34,11 +35,7 @@ function RouteComponent() {
   const handleCreate = async () => {
     const newEntry = await createEntry();
     if (newEntry) {
-      const dateStr = new Date().toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      });
+      const dateStr = format(new Date(), "MMM d, yyyy");
       const defaultTitle = `Log - ${dateStr}`;
       await invoke("save_entry", {
         id: newEntry.id,
