@@ -14,9 +14,3 @@ pub fn write_file(path: &str, content: &str) -> io::Result<()> {
 pub fn delete_file(path: &str) -> io::Result<()> {
     fs::remove_file(path)
 }
-
-pub fn get_preview(path: &str) -> io::Result<String> {
-    let content = fs::read_to_string(path)?;
-    let preview: String = content.chars().take(80).collect();
-    Ok(preview)
-}

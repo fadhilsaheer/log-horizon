@@ -3,7 +3,6 @@ export interface EntryMeta {
   title: string;
   created_at: string;
   updated_at: string;
-  preview: string;
 }
 
 export interface Entry {

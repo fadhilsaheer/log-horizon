@@ -13,7 +13,6 @@ pub struct EntryMeta {
     pub title: String,
     pub created_at: String,
     pub updated_at: String,
-    pub preview: String,
 }
 
 #[derive(serde::Serialize)]
@@ -23,10 +22,6 @@ pub struct Entry {
     pub created_at: String,
     pub updated_at: String,
     pub content: String,
-}
-
-fn get_preview(path: &str) -> String {
-    fs_helper::get_preview(path).unwrap_or_default()
 }
 
 #[tauri::command]
@@ -41,7 +36,6 @@ pub fn list_entries(state: State<'_, Mutex<Connection>>) -> Result<Vec<EntryMeta
             title: db_entry.title,
             created_at: db_entry.created_at,
             updated_at: db_entry.updated_at,
-            preview: get_preview(&db_entry.file_path),
         })
         .collect();
         
@@ -105,7 +99,6 @@ pub fn create_entry(app_handle: AppHandle, state: State<'_, Mutex<Connection>>) 
         title,
         created_at,
         updated_at,
-        preview: String::new(),
     })
 }
 
