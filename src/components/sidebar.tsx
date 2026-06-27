@@ -27,11 +27,7 @@ export const Sidebar: React.FC<Props> = (props) => {
       <div className="w-[260px] h-full flex flex-col min-w-[260px]">
         <SidebarHeader onCreate={props.onCreate} />
 
-        <ScrollArea
-          className={cn(
-            "flex-1 overflow-x-hidden p-2 space-y-1",
-          )}
-        >
+        <ScrollArea className={cn("flex-1 overflow-x-hidden p-2 space-y-1")}>
           {props.entries.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center p-6 select-none opacity-80 min-h-[300px]">
               <div className="w-12 h-12 mb-3 rounded-full bg-surface-0/50 flex items-center justify-center text-subtext-0">
@@ -55,7 +51,7 @@ export const Sidebar: React.FC<Props> = (props) => {
               </p>
             </div>
           ) : (
-            <div className="flex flex-col gap-1 pr-1">
+            <div className="flex flex-col gap-1 pr-1 pt-2">
               {props.entries.map((entry) => (
                 <EntryList
                   key={entry.id}
