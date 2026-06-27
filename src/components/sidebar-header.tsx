@@ -10,7 +10,7 @@ export const SidebarHeader: React.FC<Props> = (props) => {
   return (
     <div
       className={cn(
-        "p-4 backdrop-blur-sm bg-mantle/80 sticky top-0 flex items-center justify-between z-20",
+        "px-5 pt-5 backdrop-blur-sm bg-mantle/80 sticky top-0 flex items-center justify-between z-20",
         props.className,
       )}
     >

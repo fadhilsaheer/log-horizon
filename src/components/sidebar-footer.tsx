@@ -12,7 +12,7 @@ export const SidebarFooter: React.FC<Props> = (props) => {
   return (
     <div
       className={cn(
-        "py-3.5 px-5  mt-auto flex items-center justify-between",
+        "pb-3.5 px-5  mt-auto flex items-center justify-between",
         props.className,
       )}
     >

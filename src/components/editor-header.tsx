@@ -14,7 +14,7 @@ export const EditorHeader: React.FC<Props> = (props) => {
   return (
     <header
       className={cn(
-        "px-8 pt-3.5 pb-4 flex flex-col group relative",
+        "px-8 pt-5 pb-4 flex flex-col group relative",
         props.className,
       )}
     >

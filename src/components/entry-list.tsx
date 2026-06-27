@@ -39,11 +39,11 @@ export const EntryList: React.FC<Props> = (props) => {
           e.stopPropagation();
           props.onDelete();
         }}
-        className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 opacity-0 group-hover:opacity-100 text-subtext-0 hover:text-red transition-all duration-300 rounded-md hover:bg-surface-1"
+        className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 opacity-0 group-hover:opacity-100 text-subtext-0 hover:text-red transition-all duration-300 rounded-lg hover:bg-surface-1"
         title="Delete Entry"
       >
         <svg
-          className="size-4"
+          className="size-3.5"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

@@ -16,7 +16,7 @@ export const EmptyState: React.FC<Props> = (props) => {
     >
       <button
         onClick={props.onToggleSidebar}
-        className="absolute top-4 left-5 p-1.5 text-subtext-0 hover:text-text hover:bg-surface-0/50 rounded-lg transition-colors z-20"
+        className="absolute top-5 left-5 p-1.5 text-subtext-0 hover:text-text hover:bg-surface-0/50 rounded-lg transition-colors z-20"
       >
         <svg
           className="size-4"
