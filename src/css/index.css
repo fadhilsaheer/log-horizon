@@ -71,7 +71,7 @@
   /* Default theme application */
   color-scheme: light;
   background-color: var(--base);
-  transition: all 0.3s;
+  transition: all 0.2s;
   color: var(--text);
 }
 
