@@ -29,9 +29,15 @@ export function useEntries() {
     }
   }, [refresh]);
 
+  const updateEntryMeta = useCallback((id: string, updates: Partial<EntryMeta>) => {
+    setEntries((prev) => 
+      prev.map(entry => entry.id === id ? { ...entry, ...updates } : entry)
+    );
+  }, []);
+
   useEffect(() => {
     refresh();
   }, [refresh]);
 
-  return { entries, loading, refresh, createEntry };
+  return { entries, loading, refresh, createEntry, updateEntryMeta };
 }

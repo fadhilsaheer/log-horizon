@@ -7,6 +7,7 @@ export function useEntry(id: string | null) {
   const [loading, setLoading] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const saveTimeoutRef = useRef<number | null>(null);
+  const pendingSaveRef = useRef<{ id: string; title: string; content: string } | null>(null);
 
   const loadEntry = useCallback(async (entryId: string) => {
     try {
@@ -29,8 +30,15 @@ export function useEntry(id: string | null) {
     }
     
     return () => {
-      if (saveTimeoutRef.current) {
+      if (saveTimeoutRef.current && pendingSaveRef.current) {
         clearTimeout(saveTimeoutRef.current);
+        const { id: pendingId, title, content } = pendingSaveRef.current;
+        invoke("save_entry", { id: pendingId, title, content }).catch(err => 
+          console.error("Failed to background save entry:", err)
+        );
+        saveTimeoutRef.current = null;
+        pendingSaveRef.current = null;
+        setIsSaving(false);
       }
     };
   }, [id, loadEntry]);
@@ -39,6 +47,7 @@ export function useEntry(id: string | null) {
     if (!id) return;
     
     setEntry((prev) => prev ? { ...prev, title, content } : null);
+    pendingSaveRef.current = { id, title, content };
 
     if (saveTimeoutRef.current) {
       clearTimeout(saveTimeoutRef.current);
@@ -55,6 +64,8 @@ export function useEntry(id: string | null) {
         console.error("Failed to save entry:", err);
       } finally {
         setIsSaving(false);
+        pendingSaveRef.current = null;
+        saveTimeoutRef.current = null;
       }
     }, 1000);
   }, [id]);

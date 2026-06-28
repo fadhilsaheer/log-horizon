@@ -25,7 +25,7 @@ function RouteComponent() {
   const { id } = Route.useSearch();
   const navigate = useNavigate({ from: Route.fullPath });
 
-  const { entries, refresh, createEntry } = useEntries();
+  const { entries, refresh, createEntry, updateEntryMeta } = useEntries();
   const { entry, save, isSaving } = useEntry(id || null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
@@ -94,7 +94,9 @@ function RouteComponent() {
         isSaving={isSaving}
         onSave={(title, content) => {
           save(title, content);
-          refresh();
+          if (id) {
+            updateEntryMeta(id, { title, updated_at: new Date().toISOString() });
+          }
         }}
         onDelete={handleDelete}
         onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
