@@ -5,6 +5,7 @@ import { Entry } from "@/types/entry";
 export function useEntry(id: string | null) {
   const [entry, setEntry] = useState<Entry | null>(null);
   const [loading, setLoading] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const saveTimeoutRef = useRef<number | null>(null);
 
   const loadEntry = useCallback(async (entryId: string) => {
@@ -45,9 +46,15 @@ export function useEntry(id: string | null) {
 
     saveTimeoutRef.current = window.setTimeout(async () => {
       try {
-        await invoke("save_entry", { id, title, content });
+        setIsSaving(true);
+        await Promise.all([
+          invoke("save_entry", { id, title, content }),
+          new Promise(resolve => setTimeout(resolve, 500)) // Ensure spinner is visible for at least 500ms
+        ]);
       } catch (err) {
         console.error("Failed to save entry:", err);
+      } finally {
+        setIsSaving(false);
       }
     }, 1000);
   }, [id]);
@@ -64,5 +71,5 @@ export function useEntry(id: string | null) {
     }
   }, [id]);
 
-  return { entry, loading, save, deleteEntry };
+  return { entry, loading, save, deleteEntry, isSaving };
 }

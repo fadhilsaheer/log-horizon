@@ -9,6 +9,7 @@ import { format } from "date-fns";
 
 interface Props {
   entry: Entry | null;
+  isSaving?: boolean;
   onSave: (title: string, content: string) => void;
   onDelete: () => void;
   onToggleSidebar: () => void;
@@ -120,6 +121,7 @@ export const Editor: React.FC<Props> = (props) => {
         cursorPos={cursorPos}
         wordsCount={wordsCount}
         charsCount={charsCount}
+        isSaving={props.isSaving}
       />
     </div>
   );

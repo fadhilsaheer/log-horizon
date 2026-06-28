@@ -26,7 +26,7 @@ function RouteComponent() {
   const navigate = useNavigate({ from: Route.fullPath });
 
   const { entries, refresh, createEntry } = useEntries();
-  const { entry, save, deleteEntry } = useEntry(id || null);
+  const { entry, save, isSaving } = useEntry(id || null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   // Custom Modal State
@@ -91,6 +91,7 @@ function RouteComponent() {
       />
       <Editor
         entry={entry}
+        isSaving={isSaving}
         onSave={(title, content) => {
           save(title, content);
           refresh();
