@@ -90,7 +90,7 @@ export const Editor: React.FC<Props> = (props) => {
         onDelete={props.onDelete}
       />
 
-      <ScrollArea className="flex-1 w-full">
+      <ScrollArea className="flex-1 w-full mt-2">
         <div
           className="flex-1 flex flex-col p-8 pt-0 pb-12 cursor-text min-h-full"
           onClick={() => textareaRef.current?.focus()}
