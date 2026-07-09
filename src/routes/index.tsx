@@ -3,7 +3,6 @@ import { useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { Sidebar } from "@/components/sidebar";
 import { Editor } from "@/components/editor";
-import { ConfirmModal } from "@/components/confirm-modal";
 import { useEntries } from "@/hooks/use-entries";
 import { useEntry } from "@/hooks/use-entry";
 import { format } from "date-fns";
@@ -29,9 +28,6 @@ function RouteComponent() {
   const { entry, save, isSaving } = useEntry(id || null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
-  // Custom Modal State
-  const [deleteTargetId, setDeleteTargetId] = useState<string | null>(null);
-
   const handleSelect = (newId: string) => {
     navigate({ search: { id: newId } });
   };
@@ -51,32 +47,17 @@ function RouteComponent() {
     }
   };
 
-  const handleDelete = () => {
-    console.log("delete trigger");
-    if (id) {
-      setDeleteTargetId(id);
-    }
-  };
-
-  const handleDeleteFromSidebar = (entryId: string) => {
-    setDeleteTargetId(entryId);
-  };
-
-  const executeDelete = async () => {
+  const executeDelete = async (targetId: string) => {
     console.log("delete implementation");
-    if (!deleteTargetId) return;
-
     try {
-      await invoke("delete_entry", { id: deleteTargetId });
+      await invoke("delete_entry", { id: targetId });
       await refresh();
-      if (id === deleteTargetId) {
+      if (id === targetId) {
         navigate({ search: {} });
       }
     } catch (err) {
       console.error("Failed to delete entry:", err);
     }
-
-    setDeleteTargetId(null);
   };
 
   return (
@@ -86,7 +67,7 @@ function RouteComponent() {
         activeId={id || null}
         onSelect={handleSelect}
         onCreate={handleCreate}
-        onDelete={handleDeleteFromSidebar}
+        onDelete={executeDelete}
         isOpen={isSidebarOpen}
       />
       <Editor
@@ -98,16 +79,8 @@ function RouteComponent() {
             updateEntryMeta(id, { title, updated_at: new Date().toISOString() });
           }
         }}
-        onDelete={handleDelete}
+        onDelete={() => id && executeDelete(id)}
         onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
-      />
-
-      <ConfirmModal
-        isOpen={deleteTargetId !== null}
-        onClose={() => setDeleteTargetId(null)}
-        onConfirm={executeDelete}
-        title="Delete Log"
-        description="Are you sure you want to delete this entry? This action cannot be undone."
       />
     </div>
   );
