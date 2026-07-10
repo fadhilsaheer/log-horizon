@@ -32,7 +32,14 @@ export const Editor: React.FC<Props> = (props) => {
   useEffect(() => {
     if (props.entry) {
       // Timeout to ensure DOM has updated before adjusting height
-      setTimeout(adjustTextareaHeight, 0);
+      setTimeout(() => {
+        adjustTextareaHeight();
+        if (props.entry?.kind !== "pile" && textareaRef.current) {
+          textareaRef.current.focus();
+          textareaRef.current.selectionStart = textareaRef.current.value.length;
+          textareaRef.current.selectionEnd = textareaRef.current.value.length;
+        }
+      }, 0);
     }
   }, []);
 

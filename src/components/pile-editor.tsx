@@ -33,12 +33,27 @@ export const PileEditor: React.FC<Props> = ({ content, onChange, entryId }) => {
   }, [entryId]);
 
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
+  const [initialFocusDone, setInitialFocusDone] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = () => setDeleteConfirmId(null);
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
+
+  // Focus the last textarea on mount/load
+  useEffect(() => {
+    if (!initialFocusDone && items.length > 0) {
+      const lastItem = items[items.length - 1];
+      const el = textareasRef.current[lastItem.id];
+      if (el) {
+        el.focus();
+        el.selectionStart = el.value.length;
+        el.selectionEnd = el.value.length;
+        setInitialFocusDone(true);
+      }
+    }
+  }, [items, initialFocusDone]);
 
   // Adjust all textareas on mount or items change
   useEffect(() => {
