@@ -3,6 +3,7 @@ import { Entry } from "@/types/entry";
 import { EmptyState } from "./empty-state";
 import { EditorHeader } from "./editor-header";
 import { EditorFooter } from "./editor-footer";
+import { PileEditor } from "./pile-editor";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
@@ -93,26 +94,41 @@ export const Editor: React.FC<Props> = (props) => {
       <ScrollArea className="flex-1 w-full mt-2">
         <div
           className="flex-1 flex flex-col p-8 pt-0 pb-12 cursor-text min-h-full"
-          onClick={() => textareaRef.current?.focus()}
+          onClick={() => {
+            if (props.entry?.kind !== "pile") {
+              textareaRef.current?.focus();
+            }
+          }}
         >
-          <textarea
-            ref={textareaRef}
-            value={content}
-            onChange={handleContentChange}
-            onKeyUp={handleCursorChange}
-            onClick={(e) => {
-              e.stopPropagation();
-              handleCursorChange();
-            }}
-            className={cn(
-              "w-full bg-transparent border-none outline-none text-text text-lg leading-relaxed",
-              "resize-none focus:ring-0 overflow-hidden",
-            )}
-            style={{ minHeight: "200px" }}
-            placeholder="Start writing..."
-            autoFocus
-            spellCheck={false}
-          />
+          {props.entry.kind === "pile" ? (
+            <PileEditor
+              entryId={props.entry.id}
+              content={content}
+              onChange={(newContent) => {
+                setContent(newContent);
+                props.onSave(title, newContent);
+              }}
+            />
+          ) : (
+            <textarea
+              ref={textareaRef}
+              value={content}
+              onChange={handleContentChange}
+              onKeyUp={handleCursorChange}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleCursorChange();
+              }}
+              className={cn(
+                "w-full bg-transparent border-none outline-none text-text text-lg leading-relaxed",
+                "resize-none focus:ring-0 overflow-hidden",
+              )}
+              style={{ minHeight: "200px" }}
+              placeholder="Start writing..."
+              autoFocus
+              spellCheck={false}
+            />
+          )}
         </div>
       </ScrollArea>
 

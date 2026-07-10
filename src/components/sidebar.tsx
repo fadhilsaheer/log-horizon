@@ -10,7 +10,7 @@ interface Props {
   entries: EntryMeta[];
   activeId: string | null;
   onSelect: (id: string) => void;
-  onCreate: () => void;
+  onCreate: (kind: "freewrite" | "pile") => void;
   onDelete: (id: string) => void;
   isOpen?: boolean;
 }

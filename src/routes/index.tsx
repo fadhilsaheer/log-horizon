@@ -32,15 +32,15 @@ function RouteComponent() {
     navigate({ search: { id: newId } });
   };
 
-  const handleCreate = async () => {
-    const newEntry = await createEntry();
+  const handleCreate = async (kind: "freewrite" | "pile") => {
+    const newEntry = await createEntry(kind);
     if (newEntry) {
       const dateStr = format(new Date(), "MMM d, yyyy");
       const defaultTitle = `Log - ${dateStr}`;
       await invoke("save_entry", {
         id: newEntry.id,
         title: defaultTitle,
-        content: "",
+        content: kind === "pile" ? "[]" : "",
       });
       navigate({ search: { id: newEntry.id } });
       await refresh();

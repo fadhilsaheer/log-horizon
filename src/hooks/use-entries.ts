@@ -18,9 +18,9 @@ export function useEntries() {
     }
   }, []);
 
-  const createEntry = useCallback(async (): Promise<EntryMeta | null> => {
+  const createEntry = useCallback(async (kind: "freewrite" | "pile" = "freewrite"): Promise<EntryMeta | null> => {
     try {
-      const newEntry = await invoke<EntryMeta>("create_entry");
+      const newEntry = await invoke<EntryMeta>("create_entry", { kind });
       await refresh();
       return newEntry;
     } catch (err) {
