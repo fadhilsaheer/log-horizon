@@ -71,6 +71,7 @@ function RouteComponent() {
         isOpen={isSidebarOpen}
       />
       <Editor
+        key={entry?.id}
         entry={entry}
         isSaving={isSaving}
         onSave={(title, content) => {

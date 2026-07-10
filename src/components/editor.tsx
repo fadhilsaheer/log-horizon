@@ -17,8 +17,8 @@ interface Props {
 }
 
 export const Editor: React.FC<Props> = (props) => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [title, setTitle] = useState(props.entry?.title || "");
+  const [content, setContent] = useState(props.entry?.content || "");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [cursorPos, setCursorPos] = useState({ line: 1, col: 1 });
 
@@ -31,12 +31,10 @@ export const Editor: React.FC<Props> = (props) => {
 
   useEffect(() => {
     if (props.entry) {
-      setTitle(props.entry.title);
-      setContent(props.entry.content);
       // Timeout to ensure DOM has updated before adjusting height
       setTimeout(adjustTextareaHeight, 0);
     }
-  }, [props.entry?.id]);
+  }, []);
 
   if (!props.entry) {
     return <EmptyState onToggleSidebar={props.onToggleSidebar} />;
