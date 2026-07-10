@@ -35,11 +35,11 @@ export const SidebarHeader: React.FC<Props> = (props) => {
         />
         <span className="font-black text-text">Log Horizon</span>
       </div>
-      
+
       <div className="relative flex items-center" ref={menuRef}>
         <button
           onClick={() => props.onCreate("freewrite")}
-          className="p-1.5 text-subtext-0 hover:text-text hover:bg-surface-0/50 rounded-l-lg transition-all duration-300 border-r border-surface-0"
+          className="p-1.5 text-subtext-0 hover:text-text hover:bg-surface-0/50 rounded-l-lg transition-all duration-300"
           title="New Freewrite"
         >
           <svg
