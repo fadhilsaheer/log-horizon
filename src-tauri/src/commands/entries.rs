@@ -13,6 +13,7 @@ pub struct EntryMeta {
     pub title: String,
     pub created_at: String,
     pub updated_at: String,
+    pub kind: String,
 }
 
 #[derive(serde::Serialize)]
@@ -22,6 +23,7 @@ pub struct Entry {
     pub created_at: String,
     pub updated_at: String,
     pub content: String,
+    pub kind: String,
 }
 
 #[tauri::command]
@@ -36,6 +38,7 @@ pub fn list_entries(state: State<'_, Mutex<Connection>>) -> Result<Vec<EntryMeta
             title: db_entry.title,
             created_at: db_entry.created_at,
             updated_at: db_entry.updated_at,
+            kind: db_entry.kind,
         })
         .collect();
         
@@ -55,11 +58,12 @@ pub fn get_entry(id: String, state: State<'_, Mutex<Connection>>) -> Result<Entr
         created_at: db_entry.created_at,
         updated_at: db_entry.updated_at,
         content,
+        kind: db_entry.kind,
     })
 }
 
 #[tauri::command]
-pub fn create_entry(app_handle: AppHandle, state: State<'_, Mutex<Connection>>) -> Result<EntryMeta, String> {
+pub fn create_entry(kind: String, app_handle: AppHandle, state: State<'_, Mutex<Connection>>) -> Result<EntryMeta, String> {
     let id = Uuid::new_v4().to_string();
     let now = Utc::now();
     let created_at = now.to_rfc3339();
@@ -76,8 +80,9 @@ pub fn create_entry(app_handle: AppHandle, state: State<'_, Mutex<Connection>>) 
     let file_path = entries_dir.join(format!("{}.txt", id));
     let file_path_str = file_path.to_string_lossy().to_string();
     
-    // Write empty .txt file
-    fs_helper::write_file(&file_path_str, "").map_err(|e| e.to_string())?;
+    // Write empty .txt file based on kind
+    let initial_content = if kind == "pile" { "[]" } else { "" };
+    fs_helper::write_file(&file_path_str, initial_content).map_err(|e| e.to_string())?;
     
     // Insert into SQLite
     let date_title = now.format("%B %d, %Y").to_string();
@@ -89,6 +94,7 @@ pub fn create_entry(app_handle: AppHandle, state: State<'_, Mutex<Connection>>) 
         created_at: created_at.clone(),
         updated_at: updated_at.clone(),
         file_path: file_path_str,
+        kind: kind.clone(),
     };
     
     let conn = state.lock().map_err(|_| "Failed to lock database state")?;
@@ -99,6 +105,7 @@ pub fn create_entry(app_handle: AppHandle, state: State<'_, Mutex<Connection>>) 
         title,
         created_at,
         updated_at,
+        kind,
     })
 }
 

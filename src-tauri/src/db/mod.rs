@@ -29,9 +29,17 @@ pub fn init_db(app_handle: &AppHandle) -> SqliteResult<Connection> {
             title       TEXT NOT NULL,
             created_at  TEXT NOT NULL,
             updated_at  TEXT NOT NULL,
-            file_path   TEXT NOT NULL
+            file_path   TEXT NOT NULL,
+            kind        TEXT NOT NULL DEFAULT 'freewrite'
         );"
     )?;
+
+    // Migration to add `kind` column for existing databases.
+    // Ignoring the error if the column already exists.
+    let _ = conn.execute(
+        "ALTER TABLE entries ADD COLUMN kind TEXT NOT NULL DEFAULT 'freewrite'",
+        []
+    );
 
     Ok(conn)
 }

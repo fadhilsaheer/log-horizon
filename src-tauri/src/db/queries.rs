@@ -6,6 +6,7 @@ pub struct DbEntry {
     pub created_at: String,
     pub updated_at: String,
     pub file_path: String,
+    pub kind: String,
 }
 
 pub fn insert_entry(
@@ -13,14 +14,15 @@ pub fn insert_entry(
     entry: &DbEntry,
 ) -> Result<()> {
     conn.execute(
-        "INSERT INTO entries (id, title, created_at, updated_at, file_path)
-         VALUES (?1, ?2, ?3, ?4, ?5)",
+        "INSERT INTO entries (id, title, created_at, updated_at, file_path, kind)
+         VALUES (?1, ?2, ?3, ?4, ?5, ?6)",
         params![
             entry.id,
             entry.title,
             entry.created_at,
             entry.updated_at,
             entry.file_path,
+            entry.kind,
         ],
     )?;
     Ok(())
@@ -46,7 +48,7 @@ pub fn delete_entry(conn: &Connection, id: &str) -> Result<()> {
 
 pub fn list_entries(conn: &Connection) -> Result<Vec<DbEntry>> {
     let mut stmt = conn.prepare(
-        "SELECT id, title, created_at, updated_at, file_path
+        "SELECT id, title, created_at, updated_at, file_path, kind
          FROM entries
          ORDER BY created_at DESC",
     )?;
@@ -58,6 +60,7 @@ pub fn list_entries(conn: &Connection) -> Result<Vec<DbEntry>> {
             created_at: row.get(2)?,
             updated_at: row.get(3)?,
             file_path: row.get(4)?,
+            kind: row.get(5)?,
         })
     })?;
 
@@ -77,7 +80,7 @@ pub fn get_entry_path(conn: &Connection, id: &str) -> Result<String> {
 
 pub fn get_entry_by_id(conn: &Connection, id: &str) -> Result<DbEntry> {
     let mut stmt = conn.prepare(
-        "SELECT id, title, created_at, updated_at, file_path FROM entries WHERE id = ?1"
+        "SELECT id, title, created_at, updated_at, file_path, kind FROM entries WHERE id = ?1"
     )?;
     stmt.query_row(params![id], |row| {
         Ok(DbEntry {
@@ -86,6 +89,7 @@ pub fn get_entry_by_id(conn: &Connection, id: &str) -> Result<DbEntry> {
             created_at: row.get(2)?,
             updated_at: row.get(3)?,
             file_path: row.get(4)?,
+            kind: row.get(5)?,
         })
     })
 }
