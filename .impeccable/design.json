@@ -1,0 +1,592 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-28T06:22:49.962642+00:00",
+  "title": "Design System: Log Horizon",
+  "extensions": {
+    "colorMeta": {
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Canvas",
+        "tonalRamp": [
+          "oklch(15% 0.0074 80.72)",
+          "oklch(26% 0.0074 80.72)",
+          "oklch(38% 0.0074 80.72)",
+          "oklch(49% 0.0074 80.72)",
+          "oklch(61% 0.0074 80.72)",
+          "oklch(72% 0.0074 80.72)",
+          "oklch(84% 0.0074 80.72)",
+          "oklch(95% 0.0074 80.72)"
+        ]
+      },
+      "page": {
+        "role": "neutral",
+        "displayName": "Page",
+        "tonalRamp": [
+          "oklch(15% 0.0057 84.57)",
+          "oklch(26% 0.0057 84.57)",
+          "oklch(38% 0.0057 84.57)",
+          "oklch(49% 0.0057 84.57)",
+          "oklch(61% 0.0057 84.57)",
+          "oklch(72% 0.0057 84.57)",
+          "oklch(84% 0.0057 84.57)",
+          "oklch(95% 0.0057 84.57)"
+        ]
+      },
+      "sidebar": {
+        "role": "neutral",
+        "displayName": "Sidebar",
+        "tonalRamp": [
+          "oklch(15% 0.0074 80.72)",
+          "oklch(26% 0.0074 80.72)",
+          "oklch(38% 0.0074 80.72)",
+          "oklch(49% 0.0074 80.72)",
+          "oklch(61% 0.0074 80.72)",
+          "oklch(72% 0.0074 80.72)",
+          "oklch(84% 0.0074 80.72)",
+          "oklch(95% 0.0074 80.72)"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Text",
+        "tonalRamp": [
+          "oklch(15% 0.0090 67.49)",
+          "oklch(26% 0.0090 67.49)",
+          "oklch(38% 0.0090 67.49)",
+          "oklch(49% 0.0090 67.49)",
+          "oklch(61% 0.0090 67.49)",
+          "oklch(72% 0.0090 67.49)",
+          "oklch(84% 0.0090 67.49)",
+          "oklch(95% 0.0090 67.49)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(15% 0.0182 67.39)",
+          "oklch(26% 0.0182 67.39)",
+          "oklch(38% 0.0182 67.39)",
+          "oklch(49% 0.0182 67.39)",
+          "oklch(61% 0.0182 67.39)",
+          "oklch(72% 0.0182 67.39)",
+          "oklch(84% 0.0182 67.39)",
+          "oklch(95% 0.0182 67.39)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "tonalRamp": [
+          "oklch(15% 0.0121 79.78)",
+          "oklch(26% 0.0121 79.78)",
+          "oklch(38% 0.0121 79.78)",
+          "oklch(49% 0.0121 79.78)",
+          "oklch(61% 0.0121 79.78)",
+          "oklch(72% 0.0121 79.78)",
+          "oklch(84% 0.0121 79.78)",
+          "oklch(95% 0.0121 79.78)"
+        ]
+      },
+      "field": {
+        "role": "neutral",
+        "displayName": "Field",
+        "tonalRamp": [
+          "oklch(15% 0.0091 78.28)",
+          "oklch(26% 0.0091 78.28)",
+          "oklch(38% 0.0091 78.28)",
+          "oklch(49% 0.0091 78.28)",
+          "oklch(61% 0.0091 78.28)",
+          "oklch(72% 0.0091 78.28)",
+          "oklch(84% 0.0091 78.28)",
+          "oklch(95% 0.0091 78.28)"
+        ]
+      },
+      "hover": {
+        "role": "neutral",
+        "displayName": "Hover",
+        "tonalRamp": [
+          "oklch(15% 0.0138 78.26)",
+          "oklch(26% 0.0138 78.26)",
+          "oklch(38% 0.0138 78.26)",
+          "oklch(49% 0.0138 78.26)",
+          "oklch(61% 0.0138 78.26)",
+          "oklch(72% 0.0138 78.26)",
+          "oklch(84% 0.0138 78.26)",
+          "oklch(95% 0.0138 78.26)"
+        ]
+      },
+      "selected": {
+        "role": "neutral",
+        "displayName": "Selected",
+        "tonalRamp": [
+          "oklch(15% 0.0155 77.06)",
+          "oklch(26% 0.0155 77.06)",
+          "oklch(38% 0.0155 77.06)",
+          "oklch(49% 0.0155 77.06)",
+          "oklch(61% 0.0155 77.06)",
+          "oklch(72% 0.0155 77.06)",
+          "oklch(84% 0.0155 77.06)",
+          "oklch(95% 0.0155 77.06)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Accent",
+        "tonalRamp": [
+          "oklch(15% 0.0090 67.49)",
+          "oklch(26% 0.0090 67.49)",
+          "oklch(38% 0.0090 67.49)",
+          "oklch(49% 0.0090 67.49)",
+          "oklch(61% 0.0090 67.49)",
+          "oklch(72% 0.0090 67.49)",
+          "oklch(84% 0.0090 67.49)",
+          "oklch(95% 0.0090 67.49)"
+        ]
+      },
+      "button-text": {
+        "role": "neutral",
+        "displayName": "Button Text",
+        "tonalRamp": [
+          "oklch(15% 0.0057 84.57)",
+          "oklch(26% 0.0057 84.57)",
+          "oklch(38% 0.0057 84.57)",
+          "oklch(49% 0.0057 84.57)",
+          "oklch(61% 0.0057 84.57)",
+          "oklch(72% 0.0057 84.57)",
+          "oklch(84% 0.0057 84.57)",
+          "oklch(95% 0.0057 84.57)"
+        ]
+      },
+      "danger": {
+        "role": "neutral",
+        "displayName": "Danger",
+        "tonalRamp": [
+          "oklch(15% 0.1495 26.62)",
+          "oklch(26% 0.1495 26.62)",
+          "oklch(38% 0.1495 26.62)",
+          "oklch(49% 0.1495 26.62)",
+          "oklch(61% 0.1495 26.62)",
+          "oklch(72% 0.1495 26.62)",
+          "oklch(84% 0.1495 26.62)",
+          "oklch(95% 0.1495 26.62)"
+        ]
+      },
+      "error-bg": {
+        "role": "neutral",
+        "displayName": "Error Bg",
+        "tonalRamp": [
+          "oklch(15% 0.0165 26.65)",
+          "oklch(26% 0.0165 26.65)",
+          "oklch(38% 0.0165 26.65)",
+          "oklch(49% 0.0165 26.65)",
+          "oklch(61% 0.0165 26.65)",
+          "oklch(72% 0.0165 26.65)",
+          "oklch(84% 0.0165 26.65)",
+          "oklch(95% 0.0165 26.65)"
+        ]
+      },
+      "shade": {
+        "role": "neutral",
+        "displayName": "Shade",
+        "tonalRamp": [
+          "oklch(15% 0.0000 0.00)",
+          "oklch(26% 0.0000 0.00)",
+          "oklch(38% 0.0000 0.00)",
+          "oklch(49% 0.0000 0.00)",
+          "oklch(61% 0.0000 0.00)",
+          "oklch(72% 0.0000 0.00)",
+          "oklch(84% 0.0000 0.00)",
+          "oklch(95% 0.0000 0.00)"
+        ]
+      },
+      "dark-canvas": {
+        "role": "neutral",
+        "displayName": "Dark Canvas",
+        "tonalRamp": [
+          "oklch(15% 0.0067 258.37)",
+          "oklch(26% 0.0067 258.37)",
+          "oklch(38% 0.0067 258.37)",
+          "oklch(49% 0.0067 258.37)",
+          "oklch(61% 0.0067 258.37)",
+          "oklch(72% 0.0067 258.37)",
+          "oklch(84% 0.0067 258.37)",
+          "oklch(95% 0.0067 258.37)"
+        ]
+      },
+      "dark-page": {
+        "role": "neutral",
+        "displayName": "Dark Page",
+        "tonalRamp": [
+          "oklch(15% 0.0087 255.59)",
+          "oklch(26% 0.0087 255.59)",
+          "oklch(38% 0.0087 255.59)",
+          "oklch(49% 0.0087 255.59)",
+          "oklch(61% 0.0087 255.59)",
+          "oklch(72% 0.0087 255.59)",
+          "oklch(84% 0.0087 255.59)",
+          "oklch(95% 0.0087 255.59)"
+        ]
+      },
+      "dark-sidebar": {
+        "role": "neutral",
+        "displayName": "Dark Sidebar",
+        "tonalRamp": [
+          "oklch(15% 0.0109 254.02)",
+          "oklch(26% 0.0109 254.02)",
+          "oklch(38% 0.0109 254.02)",
+          "oklch(49% 0.0109 254.02)",
+          "oklch(61% 0.0109 254.02)",
+          "oklch(72% 0.0109 254.02)",
+          "oklch(84% 0.0109 254.02)",
+          "oklch(95% 0.0109 254.02)"
+        ]
+      },
+      "dark-text": {
+        "role": "neutral",
+        "displayName": "Dark Text",
+        "tonalRamp": [
+          "oklch(15% 0.0063 255.48)",
+          "oklch(26% 0.0063 255.48)",
+          "oklch(38% 0.0063 255.48)",
+          "oklch(49% 0.0063 255.48)",
+          "oklch(61% 0.0063 255.48)",
+          "oklch(72% 0.0063 255.48)",
+          "oklch(84% 0.0063 255.48)",
+          "oklch(95% 0.0063 255.48)"
+        ]
+      },
+      "dark-muted": {
+        "role": "neutral",
+        "displayName": "Dark Muted",
+        "tonalRamp": [
+          "oklch(15% 0.0168 253.93)",
+          "oklch(26% 0.0168 253.93)",
+          "oklch(38% 0.0168 253.93)",
+          "oklch(49% 0.0168 253.93)",
+          "oklch(61% 0.0168 253.93)",
+          "oklch(72% 0.0168 253.93)",
+          "oklch(84% 0.0168 253.93)",
+          "oklch(95% 0.0168 253.93)"
+        ]
+      },
+      "dark-line": {
+        "role": "neutral",
+        "displayName": "Dark Line",
+        "tonalRamp": [
+          "oklch(15% 0.0167 251.79)",
+          "oklch(26% 0.0167 251.79)",
+          "oklch(38% 0.0167 251.79)",
+          "oklch(49% 0.0167 251.79)",
+          "oklch(61% 0.0167 251.79)",
+          "oklch(72% 0.0167 251.79)",
+          "oklch(84% 0.0167 251.79)",
+          "oklch(95% 0.0167 251.79)"
+        ]
+      },
+      "dark-field": {
+        "role": "neutral",
+        "displayName": "Dark Field",
+        "tonalRamp": [
+          "oklch(15% 0.0129 253.01)",
+          "oklch(26% 0.0129 253.01)",
+          "oklch(38% 0.0129 253.01)",
+          "oklch(49% 0.0129 253.01)",
+          "oklch(61% 0.0129 253.01)",
+          "oklch(72% 0.0129 253.01)",
+          "oklch(84% 0.0129 253.01)",
+          "oklch(95% 0.0129 253.01)"
+        ]
+      },
+      "dark-hover": {
+        "role": "neutral",
+        "displayName": "Dark Hover",
+        "tonalRamp": [
+          "oklch(15% 0.0167 251.79)",
+          "oklch(26% 0.0167 251.79)",
+          "oklch(38% 0.0167 251.79)",
+          "oklch(49% 0.0167 251.79)",
+          "oklch(61% 0.0167 251.79)",
+          "oklch(72% 0.0167 251.79)",
+          "oklch(84% 0.0167 251.79)",
+          "oklch(95% 0.0167 251.79)"
+        ]
+      },
+      "dark-selected": {
+        "role": "neutral",
+        "displayName": "Dark Selected",
+        "tonalRamp": [
+          "oklch(15% 0.0211 251.16)",
+          "oklch(26% 0.0211 251.16)",
+          "oklch(38% 0.0211 251.16)",
+          "oklch(49% 0.0211 251.16)",
+          "oklch(61% 0.0211 251.16)",
+          "oklch(72% 0.0211 251.16)",
+          "oklch(84% 0.0211 251.16)",
+          "oklch(95% 0.0211 251.16)"
+        ]
+      },
+      "dark-accent": {
+        "role": "primary",
+        "displayName": "Dark Accent",
+        "tonalRamp": [
+          "oklch(15% 0.0063 255.48)",
+          "oklch(26% 0.0063 255.48)",
+          "oklch(38% 0.0063 255.48)",
+          "oklch(49% 0.0063 255.48)",
+          "oklch(61% 0.0063 255.48)",
+          "oklch(72% 0.0063 255.48)",
+          "oklch(84% 0.0063 255.48)",
+          "oklch(95% 0.0063 255.48)"
+        ]
+      },
+      "dark-button-text": {
+        "role": "neutral",
+        "displayName": "Dark Button Text",
+        "tonalRamp": [
+          "oklch(15% 0.0087 255.59)",
+          "oklch(26% 0.0087 255.59)",
+          "oklch(38% 0.0087 255.59)",
+          "oklch(49% 0.0087 255.59)",
+          "oklch(61% 0.0087 255.59)",
+          "oklch(72% 0.0087 255.59)",
+          "oklch(84% 0.0087 255.59)",
+          "oklch(95% 0.0087 255.59)"
+        ]
+      },
+      "dark-danger": {
+        "role": "neutral",
+        "displayName": "Dark Danger",
+        "tonalRamp": [
+          "oklch(15% 0.1018 26.15)",
+          "oklch(26% 0.1018 26.15)",
+          "oklch(38% 0.1018 26.15)",
+          "oklch(49% 0.1018 26.15)",
+          "oklch(61% 0.1018 26.15)",
+          "oklch(72% 0.1018 26.15)",
+          "oklch(84% 0.1018 26.15)",
+          "oklch(95% 0.1018 26.15)"
+        ]
+      },
+      "dark-error-bg": {
+        "role": "neutral",
+        "displayName": "Dark Error Bg",
+        "tonalRamp": [
+          "oklch(15% 0.0372 24.82)",
+          "oklch(26% 0.0372 24.82)",
+          "oklch(38% 0.0372 24.82)",
+          "oklch(49% 0.0372 24.82)",
+          "oklch(61% 0.0372 24.82)",
+          "oklch(72% 0.0372 24.82)",
+          "oklch(84% 0.0372 24.82)",
+          "oklch(95% 0.0372 24.82)"
+        ]
+      },
+      "dark-shade": {
+        "role": "neutral",
+        "displayName": "Dark Shade",
+        "tonalRamp": [
+          "oklch(15% 0.0000 0.00)",
+          "oklch(26% 0.0000 0.00)",
+          "oklch(38% 0.0000 0.00)",
+          "oklch(49% 0.0000 0.00)",
+          "oklch(61% 0.0000 0.00)",
+          "oklch(72% 0.0000 0.00)",
+          "oklch(84% 0.0000 0.00)",
+          "oklch(95% 0.0000 0.00)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "title": {
+        "displayName": "Title",
+        "purpose": "Optional title in chosen writing face."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Default system writing; user may change face and size."
+      },
+      "dialog-title": {
+        "displayName": "Dialog-Title",
+        "purpose": "Modal heading."
+      },
+      "navigation": {
+        "displayName": "Navigation",
+        "purpose": "Entry title."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Controls."
+      },
+      "metadata": {
+        "displayName": "Metadata",
+        "purpose": "Supporting information."
+      }
+    },
+    "shadows": [
+      {
+        "name": "popover",
+        "value": "0 8px 24px rgb(0 0 0 / 8%)",
+        "purpose": "Popover separation."
+      },
+      {
+        "name": "choice",
+        "value": "0 1px 3px rgb(0 0 0 / 7%)",
+        "purpose": "Selected radio segment."
+      },
+      {
+        "name": "switch-thumb",
+        "value": "0 1px 3px rgb(0 0 0 / 14%)",
+        "purpose": "Thumb separation."
+      }
+    ],
+    "motion": [
+      {
+        "name": "drawer",
+        "value": "240ms cubic-bezier(.2,.8,.2,1)",
+        "purpose": "Overlay translate/opacity and scrim fade without layout shift."
+      },
+      {
+        "name": "control",
+        "value": "120ms",
+        "purpose": "Button color, background, and opacity."
+      },
+      {
+        "name": "saving",
+        "value": ".8s linear infinite",
+        "purpose": "Saving spinner after 350ms delay; disabled by reduced motion."
+      },
+      {
+        "name": "state",
+        "value": "160ms",
+        "purpose": "Thought metadata and switch thumb."
+      },
+      {
+        "name": "thought-arrive",
+        "value": "180ms ease-out",
+        "purpose": "Fade and translate new thoughts from 8px below; disabled by reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow",
+        "value": "759px"
+      },
+      {
+        "name": "compact-controls",
+        "value": "390px"
+      },
+      {
+        "name": "short-height",
+        "value": "600px (max-height)"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Implemented primary pill action.",
+      "html": "<div class=\"ds-preview\"><button class=\"ds-primary-button\">Unlock</button></div>",
+      "css": ".ds-preview{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;color:var(--text, #35312d);}:where(.ds-preview) button{font:inherit;cursor:pointer;border:0;color:inherit;transition:background-color 120ms,color 120ms,opacity 120ms}:where(.ds-preview) button:hover:not(:disabled){background:var(--hover, #e8e2d9)}:where(.ds-preview) button:disabled{opacity:.4;cursor:default}.ds-preview :focus-visible{outline:2px solid var(--muted, #696057);outline-offset:3px}:where(.ds-preview) input,:where(.ds-preview) textarea{font:inherit}.ds-preview ::placeholder{color:var(--muted, #696057);opacity:1}.ds-primary-button{\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  min-height: 36px;\n  padding: 9px 16px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: var(--radius-control, 999px);\n}.ds-primary-button{\n  background: var(--accent, #35312d);\n  color: var(--button-text, #faf8f4);\n}.ds-primary-button:hover:not(:disabled){\n  background: var(--accent, #35312d);\n  opacity: 0.85;\n}.ds-locked-page .ds-primary-button{\n  margin-top: 22px;\n}@media(prefers-reduced-motion:reduce){.ds-preview *{transition:none!important;animation:none!important}}"
+    },
+    {
+      "name": "Secondary action",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Implemented secondary pill action.",
+      "html": "<div class=\"ds-preview\"><button class=\"ds-secondary-button\">Restore entry</button></div>",
+      "css": ".ds-preview{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;color:var(--text, #35312d);}:where(.ds-preview) button{font:inherit;cursor:pointer;border:0;color:inherit;transition:background-color 120ms,color 120ms,opacity 120ms}:where(.ds-preview) button:hover:not(:disabled){background:var(--hover, #e8e2d9)}:where(.ds-preview) button:disabled{opacity:.4;cursor:default}.ds-preview :focus-visible{outline:2px solid var(--muted, #696057);outline-offset:3px}:where(.ds-preview) input,:where(.ds-preview) textarea{font:inherit}.ds-preview ::placeholder{color:var(--muted, #696057);opacity:1}.ds-secondary-button{\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  min-height: 36px;\n  padding: 9px 16px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: var(--radius-control, 999px);\n}.ds-secondary-button{\n  background: var(--field, #efebe5);\n}@media(prefers-reduced-motion:reduce){.ds-preview *{transition:none!important;animation:none!important}}"
+    },
+    {
+      "name": "Header icon and action menu",
+      "kind": "button",
+      "refersTo": "button-icon",
+      "description": "Quiet header action and consistent 16px glyphs on menu rows, including export.",
+      "html": "<div class=\"ds-preview\"><button class=\"ds-icon-button\" aria-label=\"Entry actions\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><circle cx=\"5\" cy=\"12\" r=\"1\"/><circle cx=\"12\" cy=\"12\" r=\"1\"/><circle cx=\"19\" cy=\"12\" r=\"1\"/></svg></button><div class=\"ds-menu\" aria-label=\"Entry actions\"><button><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12h14\"/></svg>New page</button><button><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3v12m-4-4 4 4 4-4M5 15v5h14v-5\"/></svg>Export as Markdown</button><button class=\"ds-danger\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5\"/></svg>Move to trash</button></div></div>",
+      "css": ".ds-preview{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;color:var(--text, #35312d);}:where(.ds-preview) button{font:inherit;cursor:pointer;border:0;color:inherit;transition:background-color 120ms,color 120ms,opacity 120ms}:where(.ds-preview) button:hover:not(:disabled){background:var(--hover, #e8e2d9)}:where(.ds-preview) button:disabled{opacity:.4;cursor:default}.ds-preview :focus-visible{outline:2px solid var(--muted, #696057);outline-offset:3px}:where(.ds-preview) input,:where(.ds-preview) textarea{font:inherit}.ds-preview ::placeholder{color:var(--muted, #696057);opacity:1}.ds-icon-button{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;padding:0;border:0;background:none;border-radius:var(--radius-control,999px);color:var(--muted,#696057)}.ds-icon-button:hover{background:var(--hover,#e8e2d9)}.ds-icon-button:focus-visible{outline:2px solid var(--muted,#696057);outline-offset:3px}.ds-menu{margin-top:6px;min-width:205px;padding:6px;background:var(--page,#faf8f4);border:1px solid var(--line,#e3ded6);border-radius:18px;box-shadow:0 8px 24px rgb(0 0 0 / 8%)}.ds-menu button{display:flex;align-items:center;gap:9px;width:100%;padding:10px 12px;font-size:12px;text-align:left;border-radius:12px;background:none}.ds-menu button>svg{color:var(--muted,#696057);flex-shrink:0}.ds-menu button.ds-danger{color:var(--danger,#a63530)}.ds-menu button.ds-danger>svg{color:inherit}"
+    },
+    {
+      "name": "Password field",
+      "kind": "input",
+      "refersTo": "password-input",
+      "description": "Inset password field with visible label.",
+      "html": "<div class=\"ds-preview\"><div class=\"ds-password-form\"><label>Diary password<input type=\"password\" placeholder=\"Password\" /></label></div></div>",
+      "css": ".ds-preview{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;color:var(--text, #35312d);}:where(.ds-preview) button{font:inherit;cursor:pointer;border:0;color:inherit;transition:background-color 120ms,color 120ms,opacity 120ms}:where(.ds-preview) button:hover:not(:disabled){background:var(--hover, #e8e2d9)}:where(.ds-preview) button:disabled{opacity:.4;cursor:default}.ds-preview :focus-visible{outline:2px solid var(--muted, #696057);outline-offset:3px}:where(.ds-preview) input,:where(.ds-preview) textarea{font:inherit}.ds-preview ::placeholder{color:var(--muted, #696057);opacity:1}.ds-password-form{\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n}.ds-password-form label{\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  font-size: 12px;\n}.ds-password-form input{\n  width: 100%;\n  padding: 11px 14px;\n  background: var(--field, #efebe5);\n  color: var(--text, #35312d);\n  border: 1px solid transparent;\n  border-radius: 12px;\n}@media(prefers-reduced-motion:reduce){.ds-preview *{transition:none!important;animation:none!important}}"
+    },
+    {
+      "name": "Entry navigation",
+      "kind": "nav",
+      "refersTo": "entry-navigation",
+      "description": "Selected chronological row in the overlay drawer.",
+      "html": "<div class=\"ds-preview\"><nav aria-label=\"Entries\"><button class=\"ds-entry-item ds-active\" aria-current=\"page\"><span class=\"ds-entry-icon\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 5h14v10H9l-4 4zM9 9h6\"/></svg></span><span class=\"ds-entry-summary\"><span class=\"ds-entry-title\">Small things, lately</span><span class=\"ds-entry-subtitle\">Sep 27 \u00b7 Pile</span></span></button></nav></div>",
+      "css": ".ds-preview{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;color:var(--text, #35312d);}:where(.ds-preview) button{font:inherit;cursor:pointer;border:0;color:inherit;transition:background-color 120ms,color 120ms,opacity 120ms}:where(.ds-preview) button:hover:not(:disabled){background:var(--hover, #e8e2d9)}:where(.ds-preview) button:disabled{opacity:.4;cursor:default}.ds-preview :focus-visible{outline:2px solid var(--muted, #696057);outline-offset:3px}:where(.ds-preview) input,:where(.ds-preview) textarea{font:inherit}.ds-preview ::placeholder{color:var(--muted, #696057);opacity:1}.ds-entry-item{\n  display: flex;\n  align-items: flex-start;\n  width: 100%;\n  gap: 10px;\n  padding: 12px;\n  margin-bottom: 3px;\n  text-align: left;\n  border-radius: 16px;\n}.ds-entry-item.ds-active{\n  background: var(--selected, #e4ddd3);\n}.ds-entry-icon{\n  padding-top: 2px;\n  color: var(--muted, #696057);\n}.ds-entry-summary{\n  min-width: 0;\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}.ds-entry-title{\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  font-size: 13px;\n}.ds-entry-subtitle{\n  display: flex;\n  gap: 7px;\n  font-size: 11px;\n  color: var(--muted, #696057);\n}@media(prefers-reduced-motion:reduce){.ds-preview *{transition:none!important;animation:none!important}}"
+    },
+    {
+      "name": "Stationary Pile input",
+      "kind": "custom",
+      "refersTo": "thought-input",
+      "description": "Bottom-aligned scrolling history above a stationary borderless input, with labelled edit/delete icons. Delete arms a red check in the same button; a second click removes the thought, while Escape, blur, or a four-second timeout cancels.",
+      "html": "<div class=\"ds-preview ds-pile-layout\"><div class=\"ds-thought-stream\"><div class=\"ds-thought-stack\"><article class=\"ds-thought\"><p class=\"ds-thought-text\">A thought from earlier.</p><div class=\"ds-thought-meta\"><time>Sep 27, 10:30 AM</time><div class=\"ds-thought-actions\"><button class=\"ds-icon-button\" aria-label=\"Edit thought\" title=\"Edit thought\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m15 5 4 4M4 20l4-1L20 7a2.8 2.8 0 0 0-4-4L4 15zM13 20h7\"/></svg></button><button class=\"ds-icon-button ds-confirm-delete ds-danger\" aria-label=\"Confirm delete thought\" title=\"Click again to delete\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg></button></div></div></article></div></div><div class=\"ds-thought-input-wrap\"><div class=\"ds-thought-input\"><textarea rows=\"1\" aria-label=\"New thought\" placeholder=\"Add a thought\u2026\">Another thought</textarea><button class=\"ds-add-thought-button\">Add</button></div></div></div>",
+      "css": ".ds-preview{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;color:var(--text, #35312d);}:where(.ds-preview) button{font:inherit;cursor:pointer;border:0;color:inherit;transition:background-color 120ms,color 120ms,opacity 120ms}:where(.ds-preview) button:hover:not(:disabled){background:var(--hover, #e8e2d9)}:where(.ds-preview) button:disabled{opacity:.4;cursor:default}.ds-preview :focus-visible{outline:2px solid var(--muted, #696057);outline-offset:3px}:where(.ds-preview) input,:where(.ds-preview) textarea{font:inherit}.ds-preview ::placeholder{color:var(--muted, #696057);opacity:1}.ds-thought-input textarea:focus-visible{\n  outline: none;\n}/* Pile is a chronological page of notes; its next line follows the last thought. */\n.ds-thought{\n  margin: 0 0 28px;\n}.ds-thought-text,.ds-thought-input textarea{\n  font: var(--writing-size,18px)/1.8 var(--writing-font,-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif);\n  white-space: pre-wrap;\n  overflow-wrap: anywhere;\n  color: var(--text, #35312d);\n  margin: 0;\n}.ds-thought-meta{\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  min-height: 25px;\n  margin-top: 5px;\n  font-size: 11px;\n  color: var(--muted, #696057);\n  opacity: 0;\n  transition: opacity 160ms;\n}.ds-thought:hover .ds-thought-meta,.ds-thought:focus-within .ds-thought-meta{\n  opacity: 1;\n}.ds-thought-actions{\n  display: flex;\n  gap: 5px;\n}.ds-thought-actions button{\n  padding: 4px 8px;\n  border-radius: var(--radius-control, 999px);\n  font-size: 11px;\n}.ds-thought-input{\n  display: flex;\n  align-items: flex-start;\n  gap: 16px;\n}.ds-thought-input textarea{\n  display: block;\n  min-width: 0;\n  flex: 1;\n  border: 0;\n  background: none;\n  padding: 0;\n  min-height: 33px;\n  resize: none;\n  overflow: hidden;\n}.ds-add-thought-button{\n  flex-shrink: 0;\n  height: 30px;\n  padding: 0 13px;\n  margin-top: 2px;\n  border-radius: var(--radius-control, 999px);\n  background: var(--field, #efebe5);\n  font-size: 12px;\n}.ds-add-thought-button:disabled{\n  visibility: hidden;\n}@media(prefers-reduced-motion:reduce){.ds-preview *{transition:none!important;animation:none!important}} .ds-pile-layout{height:360px;display:flex;flex-direction:column;min-height:0}.ds-thought-stream{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column;padding:0 6px;margin:0 -6px}.ds-thought-stack{margin-top:auto}.ds-thought-input-wrap{flex:0 0 150px;padding-top:20px}.ds-thought-input textarea{max-height:96px;overflow-y:auto}.ds-thought-actions .ds-icon-button{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;padding:0;border:0;background:none;border-radius:999px;color:var(--muted,#696057)}.ds-thought-actions .ds-icon-button:hover{background:var(--hover,#e8e2d9)}.ds-thought-added{animation:ds-thought-arrive 180ms ease-out}@keyframes ds-thought-arrive{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}@media(max-height:600px){.ds-thought-input-wrap{flex-basis:110px}}@media(prefers-reduced-motion:reduce){.ds-thought-added{animation:none}}.ds-thought-actions .ds-confirm-delete{background:var(--error-bg,#fff0ee)}.ds-danger{color:var(--danger,#a63530)!important}"
+    },
+    {
+      "name": "Dialog surface",
+      "kind": "custom",
+      "refersTo": "dialog",
+      "description": "Rounded neutral modal surface.",
+      "html": "<div class=\"ds-preview\"><section class=\"ds-dialog\" role=\"dialog\" aria-label=\"Welcome back\"><div class=\"ds-dialog-head\"><h2>Welcome back</h2></div><p class=\"ds-dialog-description\">Enter your diary password to unlock private entries.</p></section></div>",
+      "css": ".ds-preview{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;color:var(--text, #35312d);}:where(.ds-preview) button{font:inherit;cursor:pointer;border:0;color:inherit;transition:background-color 120ms,color 120ms,opacity 120ms}:where(.ds-preview) button:hover:not(:disabled){background:var(--hover, #e8e2d9)}:where(.ds-preview) button:disabled{opacity:.4;cursor:default}.ds-preview :focus-visible{outline:2px solid var(--muted, #696057);outline-offset:3px}:where(.ds-preview) input,:where(.ds-preview) textarea{font:inherit}.ds-preview ::placeholder{color:var(--muted, #696057);opacity:1}.ds-dialog{\n  position: fixed;\n  inset: 0;\n  margin: auto;\n  width: min(480px, calc(100vw - 32px));\n  max-height: calc(100dvh - 48px);\n  padding: 24px;\n  overflow-y: auto;\n  background: var(--page, #faf8f4);\n  color: var(--text, #35312d);\n  border: 1px solid var(--line, #e3ded6);\n  border-radius: var(--radius-surface, 24px);\n}.ds-dialog::backdrop{\n  background: var(--shade, rgb(0 0 0 / 18%));\n}.ds-dialog-head{\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  margin-bottom: 16px;\n}.ds-dialog h2{\n  font-size: 20px;\n  font-weight: 500;\n  letter-spacing: -0.025em;\n  margin: 0;\n}.ds-dialog-description{\n  font-size: 13px;\n  line-height: 1.7;\n  color: var(--muted, #696057);\n  margin: 0 0 22px;\n}.ds-concealing .ds-dialog{\n  visibility: hidden;\n}@media(prefers-reduced-motion:reduce){.ds-preview *{transition:none!important;animation:none!important}}.ds-dialog{position:relative;inset:auto;margin:0;}"
+    },
+    {
+      "name": "Choice group",
+      "kind": "custom",
+      "refersTo": "choice-group",
+      "description": "Pill radio group with selected surface and keyboard focus.",
+      "html": "<div class=\"ds-preview\"><div class=\"ds-choice-group\" role=\"radiogroup\" aria-label=\"Appearance\"><button role=\"radio\" aria-checked=\"true\">System</button><button role=\"radio\" aria-checked=\"false\" tabindex=\"-1\">Light</button><button role=\"radio\" aria-checked=\"false\" tabindex=\"-1\">Dark</button></div></div>",
+      "css": ".ds-preview{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;color:var(--text, #35312d);}:where(.ds-preview) button{font:inherit;cursor:pointer;border:0;color:inherit;transition:background-color 120ms,color 120ms,opacity 120ms}:where(.ds-preview) button:hover:not(:disabled){background:var(--hover, #e8e2d9)}:where(.ds-preview) button:disabled{opacity:.4;cursor:default}.ds-preview :focus-visible{outline:2px solid var(--muted, #696057);outline-offset:3px}:where(.ds-preview) input,:where(.ds-preview) textarea{font:inherit}.ds-preview ::placeholder{color:var(--muted, #696057);opacity:1}.ds-choice-group{\n  display: flex;\n  padding: 3px;\n  border-radius: var(--radius-control, 999px);\n  background: var(--field, #efebe5);\n}.ds-choice-group button{\n  min-width: 54px;\n  height: 29px;\n  padding: 0 11px;\n  border-radius: var(--radius-control, 999px);\n  font-size: 12px;\n  color: var(--muted, #696057);\n}.ds-choice-group button[aria-checked=\"true\"]{\n  background: var(--page, #faf8f4);\n  color: var(--text, #35312d);\n  box-shadow: 0 1px 3px rgb(0 0 0 / 7%);\n}@media(prefers-reduced-motion:reduce){.ds-preview *{transition:none!important;animation:none!important}}"
+    },
+    {
+      "name": "Size stepper",
+      "kind": "custom",
+      "refersTo": "size-stepper",
+      "description": "Compact writing-size control.",
+      "html": "<div class=\"ds-preview\"><div class=\"ds-size-stepper\" role=\"group\" aria-label=\"Text size\"><button class=\"ds-icon-button\" aria-label=\"Decrease text size\">\u2212</button><output>18px</output><button class=\"ds-icon-button\" aria-label=\"Increase text size\">+</button></div></div>",
+      "css": ".ds-preview{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;color:var(--text, #35312d);}:where(.ds-preview) button{font:inherit;cursor:pointer;border:0;color:inherit;transition:background-color 120ms,color 120ms,opacity 120ms}:where(.ds-preview) button:hover:not(:disabled){background:var(--hover, #e8e2d9)}:where(.ds-preview) button:disabled{opacity:.4;cursor:default}.ds-preview :focus-visible{outline:2px solid var(--muted, #696057);outline-offset:3px}:where(.ds-preview) input,:where(.ds-preview) textarea{font:inherit}.ds-preview ::placeholder{color:var(--muted, #696057);opacity:1}.ds-icon-button{\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 34px;\n  height: 34px;\n  padding: 0;\n  border-radius: var(--radius-control, 999px);\n  flex-shrink: 0;\n  color: var(--muted, #696057);\n}.ds-search-field .ds-icon-button{\n  width: 20px;\n  height: 24px;\n}.ds-error-banner > button:not(.ds-icon-button){\n  text-decoration: underline;\n  text-underline-offset: 3px;\n  flex-shrink: 0;\n}.ds-size-stepper{\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  background: var(--field, #efebe5);\n  border-radius: var(--radius-control, 999px);\n  padding: 2px;\n}.ds-size-stepper .ds-icon-button{\n  width: 30px;\n  height: 30px;\n}.ds-size-stepper output{\n  min-width: 42px;\n  text-align: center;\n  font-size: 12px;\n  font-variant-numeric: tabular-nums;\n}@media(prefers-reduced-motion:reduce){.ds-preview *{transition:none!important;animation:none!important}}"
+    },
+    {
+      "name": "Word count switch",
+      "kind": "custom",
+      "refersTo": "switch",
+      "description": "Compact switch with translated thumb.",
+      "html": "<div class=\"ds-preview\"><button class=\"ds-switch\" role=\"switch\" aria-checked=\"true\" aria-label=\"Word count\"><span></span></button></div>",
+      "css": ".ds-preview{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;color:var(--text, #35312d);}:where(.ds-preview) button{font:inherit;cursor:pointer;border:0;color:inherit;transition:background-color 120ms,color 120ms,opacity 120ms}:where(.ds-preview) button:hover:not(:disabled){background:var(--hover, #e8e2d9)}:where(.ds-preview) button:disabled{opacity:.4;cursor:default}.ds-preview :focus-visible{outline:2px solid var(--muted, #696057);outline-offset:3px}:where(.ds-preview) input,:where(.ds-preview) textarea{font:inherit}.ds-preview ::placeholder{color:var(--muted, #696057);opacity:1}.ds-switch{\n  width: 36px;\n  height: 22px;\n  padding: 3px;\n  border-radius: var(--radius-control, 999px);\n  background: var(--selected, #e4ddd3);\n}.ds-switch span{\n  display: block;\n  width: 16px;\n  height: 16px;\n  border-radius: 50%;\n  background: var(--page, #faf8f4);\n  box-shadow: 0 1px 3px rgb(0 0 0 / 14%);\n  transition: transform 160ms;\n}.ds-switch[aria-checked=\"true\"],.ds-switch[aria-checked=\"true\"]:hover{\n  background: var(--accent, #35312d);\n}.ds-switch[aria-checked=\"true\"] span{\n  transform: translateX(14px);\n  background: var(--button-text, #faf8f4);\n}@media(prefers-reduced-motion:reduce){.ds-preview *{transition:none!important;animation:none!important}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A quiet diary, plain writing.",
+    "overview": "A quiet diary with rounded modern controls, warm stone light surfaces and graphite dark surfaces, and plain writing. The main page is a softly rounded surface within a narrow canvas inset. Interface sizing and corner treatment draw on the user\u2019s Loftlyy reference without importing decorative content.\n\nWriting is the focus: system sans-serif by default, optional titles, no date heading or decorative prompt. Freewrite is continuous text; Pile is a flowing page of thoughts with a stationary borderless input beneath a moving thought history.",
+    "keyCharacteristics": [
+      "Warm stone light and graphite dark surfaces.",
+      "Rounded 24px surfaces and compact pill controls.",
+      "Borderless system-sans writing with optional titles.",
+      "Animated overlay history without moving the writing column.",
+      "Plain thoughts, a stationary input, and quiet icon save states."
+    ],
+    "rules": [],
+    "dos": [
+      "Do keep Freewrite and Pile input borderless on the page.",
+      "Do keep the Pile input stationary while its thought history moves.",
+      "Do use compact pill controls and the shared surface radius.",
+      "Do retain accessible names for quiet icon states and controls.",
+      "Do respect reduced-motion preferences for drawer, spinner, and state animations."
+    ],
+    "donts": [
+      "Don\u2019t add chat bubbles, a boxed composer, or a send-arrow treatment to Pile.",
+      "Don\u2019t add decorative prompts or date headings above writing.",
+      "Don\u2019t add blue or olive accents to the stone and graphite palette.",
+      "Don\u2019t move the writing column when the entry drawer opens."
+    ]
+  }
+}

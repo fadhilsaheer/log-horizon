@@ -1,178 +1,233 @@
-import React, { useState, useEffect, useRef } from "react";
-import { cn } from "@/lib/utils";
-import { formatDistanceToNow } from "date-fns";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { Icon } from "./icon";
+import { readPile, type Pile } from "@/types/entry";
 
-interface PileItem {
-  id: string;
-  text: string;
-  timestamp?: number;
-}
-
-interface Props {
+export function PileEditor({
+  content,
+  onChange,
+  readOnly = false,
+  privateEntry = false,
+}: {
   content: string;
   onChange: (content: string) => void;
-  entryId: string;
-}
-
-export const PileEditor: React.FC<Props> = ({ content, onChange, entryId }) => {
-  const [items, setItems] = useState<PileItem[]>([]);
-  const textareasRef = useRef<{ [key: string]: HTMLTextAreaElement | null }>({});
-
-  useEffect(() => {
-    try {
-      const parsed = JSON.parse(content || "[]");
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        setItems(parsed.map(item => ({ ...item, timestamp: item.timestamp || Date.now() })));
-      } else {
-        setItems([{ id: crypto.randomUUID(), text: "", timestamp: Date.now() }]);
-      }
-    } catch {
-      setItems([{ id: crypto.randomUUID(), text: content, timestamp: Date.now() }]);
-    }
-    // Only re-initialize when entry changes to avoid losing focus
-  }, [entryId]);
-
-  const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
-  const [initialFocusDone, setInitialFocusDone] = useState(false);
-
-  useEffect(() => {
-    const handleClickOutside = () => setDeleteConfirmId(null);
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, []);
-
-  // Focus the last textarea on mount/load
-  useEffect(() => {
-    if (!initialFocusDone && items.length > 0) {
-      const lastItem = items[items.length - 1];
-      const el = textareasRef.current[lastItem.id];
-      if (el) {
-        el.focus();
-        el.selectionStart = el.value.length;
-        el.selectionEnd = el.value.length;
-        setInitialFocusDone(true);
-      }
-    }
-  }, [items, initialFocusDone]);
-
-  // Adjust all textareas on mount or items change
-  useEffect(() => {
-    Object.values(textareasRef.current).forEach((el) => {
-      if (el) {
-        el.style.height = "auto";
-        el.style.height = `${el.scrollHeight}px`;
-      }
-    });
-  }, [items.length]); // Only bulk adjust when items are added/removed
-
-  const updateItem = (id: string, text: string) => {
-    const newItems = items.map((item) =>
-      item.id === id ? { ...item, text } : item
+  readOnly?: boolean;
+  privateEntry?: boolean;
+}) {
+  let pile: Pile;
+  try {
+    pile = readPile(content);
+  } catch (error) {
+    return (
+      <p role="alert" className="inline-error">
+        {String(error)}
+      </p>
     );
-    setItems(newItems);
-    onChange(JSON.stringify(newItems));
-  };
-
-  const addItem = (index: number) => {
-    const newId = crypto.randomUUID();
-    const newItems = [...items];
-    newItems.splice(index + 1, 0, { id: newId, text: "", timestamp: Date.now() });
-    setItems(newItems);
-    onChange(JSON.stringify(newItems));
-    
-    // Focus the new textarea after render
-    setTimeout(() => {
-      textareasRef.current[newId]?.focus();
-    }, 0);
-  };
-
-  const deleteItem = (index: number) => {
-    const newItems = [...items];
-    if (newItems.length === 1) {
-      newItems[0].text = "";
-    } else {
-      newItems.splice(index, 1);
-    }
-    setItems(newItems);
-    onChange(JSON.stringify(newItems));
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>, index: number) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      addItem(index);
-    }
-  };
-
+  }
   return (
-    <div className="flex flex-col gap-6 w-full py-4 pr-4">
-
-      {items.map((item, index) => {
-        const timeAgo = item.timestamp 
-          ? formatDistanceToNow(item.timestamp, { addSuffix: true }) 
-          : "just now";
-
-        return (
-        <div key={item.id} className="relative flex gap-4">
-          {/* Thread visuals */}
-          <div className="flex flex-col items-center mt-1.5 relative w-4 shrink-0">
-            <div className="w-4 h-4 rounded-full bg-surface-2 z-10 shrink-0" />
-            {index < items.length - 1 && (
-              <div className="w-0.5 bg-surface-1 absolute top-[20px] bottom-[-26px] left-1/2 -translate-x-1/2" />
-            )}
-          </div>
-
-          <div className="flex-1 flex flex-col gap-2 relative">
-            <textarea
-              ref={(el) => { textareasRef.current[item.id] = el; }}
-              value={item.text}
-              onChange={(e) => {
-                updateItem(item.id, e.target.value);
-                e.target.style.height = "auto";
-                e.target.style.height = `${e.target.scrollHeight}px`;
-              }}
-              onKeyDown={(e) => handleKeyDown(e, index)}
-              placeholder={index === 0 ? "What are you thinking?" : "Start writing..."}
-              className={cn(
-                "w-full bg-transparent border-none outline-none text-text text-lg leading-relaxed",
-                "resize-none focus:ring-0 overflow-hidden min-h-[40px] pr-36"
+    <PileContent
+      pile={pile}
+      onChange={(p) => onChange(JSON.stringify(p))}
+      readOnly={readOnly}
+      privateEntry={privateEntry}
+    />
+  );
+}
+function PileContent({
+  pile,
+  onChange,
+  readOnly,
+  privateEntry,
+}: {
+  pile: Pile;
+  onChange: (p: Pile) => void;
+  readOnly: boolean;
+  privateEntry: boolean;
+}) {
+  const [editing, setEditing] = useState<string | null>(null);
+  const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
+  useEffect(() => {
+    if (!confirmDelete) return;
+    const timer = setTimeout(() => setConfirmDelete(null), 4000);
+    return () => clearTimeout(timer);
+  }, [confirmDelete]);
+  const stream = useRef<HTMLDivElement>(null);
+  const [added, setAdded] = useState<string | null>(null);
+  const composer = useRef<HTMLTextAreaElement>(null);
+  useEffect(() => {
+    if (composer.current) {
+      composer.current.style.height = "auto";
+      composer.current.style.height = `${Math.min(96, composer.current.scrollHeight)}px`;
+    }
+  }, [pile.draft]);
+  useLayoutEffect(() => {
+    if (stream.current) stream.current.scrollTop = stream.current.scrollHeight;
+  }, [pile.items.length]);
+  const send = () => {
+    if (!pile.draft.trim()) return;
+    const id = crypto.randomUUID();
+    setAdded(id);
+    onChange({
+      items: [
+        ...pile.items,
+        {
+          id,
+          text: pile.draft.trim(),
+          timestamp: Date.now(),
+        },
+      ],
+      draft: "",
+    });
+    composer.current?.focus();
+  };
+  return (
+    <div className="pile-layout">
+      <div className="thought-stream" ref={stream}>
+        <div className="thought-stack">
+          {pile.items.map((item) => (
+            <article
+              className={`thought ${added === item.id ? "thought-added" : ""}`}
+              key={item.id}
+            >
+              {editing === item.id ? (
+                <textarea
+                  spellCheck={!privateEntry}
+                  autoCorrect={privateEntry ? "off" : "on"}
+                  className="thought-edit"
+                  aria-label="Edit thought"
+                  autoFocus
+                  ref={(el) => {
+                    if (el) {
+                      el.style.height = "auto";
+                      el.style.height = `${el.scrollHeight}px`;
+                    }
+                  }}
+                  value={item.text}
+                  onChange={(e) =>
+                    onChange({
+                      ...pile,
+                      items: pile.items.map((i) =>
+                        i.id === item.id ? { ...i, text: e.target.value } : i,
+                      ),
+                    })
+                  }
+                  onKeyDown={(e) => {
+                    if (e.key === "Escape") setEditing(null);
+                  }}
+                />
+              ) : (
+                <p className="thought-text">{item.text}</p>
               )}
-              spellCheck={false}
+              <div className="thought-meta">
+                <time>
+                  {item.timestamp
+                    ? new Date(item.timestamp).toLocaleString(undefined, {
+                        month: "short",
+                        day: "numeric",
+                        hour: "numeric",
+                        minute: "2-digit",
+                      })
+                    : "Earlier thought"}
+                </time>
+                {!readOnly && (
+                  <div className="thought-actions">
+                    <button
+                      className="icon-button"
+                      aria-label={
+                        editing === item.id
+                          ? "Finish editing thought"
+                          : "Edit thought"
+                      }
+                      title={editing === item.id ? "Done" : "Edit thought"}
+                      onClick={() =>
+                        setEditing(editing === item.id ? null : item.id)
+                      }
+                    >
+                      <Icon
+                        name={editing === item.id ? "check" : "write"}
+                        size={14}
+                      />
+                    </button>
+                    <button
+                      className={`icon-button ${confirmDelete === item.id ? "confirm-delete danger" : ""}`}
+                      aria-label={
+                        confirmDelete === item.id
+                          ? "Confirm delete thought"
+                          : "Delete thought"
+                      }
+                      title={
+                        confirmDelete === item.id
+                          ? "Click again to delete"
+                          : "Delete thought"
+                      }
+                      onBlur={() => setConfirmDelete(null)}
+                      onKeyDown={(event) => {
+                        if (event.key === "Escape") {
+                          event.preventDefault();
+                          setConfirmDelete(null);
+                        }
+                      }}
+                      onClick={() => {
+                        if (confirmDelete !== item.id) {
+                          setConfirmDelete(item.id);
+                          return;
+                        }
+                        onChange({
+                          ...pile,
+                          items: pile.items.filter((i) => i.id !== item.id),
+                        });
+                        setConfirmDelete(null);
+                        composer.current?.focus();
+                      }}
+                    >
+                      <Icon
+                        name={confirmDelete === item.id ? "check" : "trash"}
+                        size={14}
+                      />
+                    </button>
+                  </div>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+      {!readOnly ? (
+        <div className="thought-input-wrap">
+          <div className="thought-input">
+            <textarea
+              autoFocus
+              spellCheck={!privateEntry}
+              autoCorrect={privateEntry ? "off" : "on"}
+              ref={composer}
               rows={1}
+              aria-label="New thought"
+              placeholder="Add a thought…"
+              value={pile.draft}
+              onChange={(e) => onChange({ ...pile, draft: e.target.value })}
+              onKeyDown={(e) => {
+                if (
+                  e.key === "Enter" &&
+                  !e.shiftKey &&
+                  !e.nativeEvent.isComposing
+                ) {
+                  e.preventDefault();
+                  send();
+                }
+              }}
             />
-
-            {item.text.length > 0 && (
-              <div className="absolute right-0 top-1.5 flex items-center justify-end gap-3 w-32">
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setDeleteConfirmId(deleteConfirmId === item.id ? null : item.id);
-                  }}
-                  className="text-xs text-subtext-0 hover:text-text transition-colors whitespace-nowrap"
-                >
-                  {timeAgo}
-                </button>
-              </div>
-            )}
-
-            {deleteConfirmId === item.id && (
-              <div className="flex items-center gap-4 mt-2">
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    deleteItem(index);
-                    setDeleteConfirmId(null);
-                  }}
-                  className="text-sm font-medium text-red hover:text-red-400 transition-colors"
-                >
-                  Delete
-                </button>
-              </div>
-            )}
+            <button
+              className="add-thought-button"
+              aria-label="Add thought"
+              disabled={!pile.draft.trim()}
+              onClick={send}
+            >
+              Add
+            </button>
           </div>
         </div>
-        );
-      })}
+      ) : (
+        pile.draft && <p className="thought-text">Draft: {pile.draft}</p>
+      )}
     </div>
   );
-};
+}
