@@ -14,11 +14,13 @@
       {
         "title": "Log Horizon",
         "width": 1024,
-        "height": 768
+        "height": 768,
+        "minWidth": 360,
+        "minHeight": 480
       }
     ],
     "security": {
-      "csp": null
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src ipc: http://ipc.localhost; object-src 'none'; base-uri 'self'"
     }
   },
   "bundle": {
